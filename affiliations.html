@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Affiliations — Joshua Mateo</title>
+
+    <!-- Bootstrap 5 CSS (CDN) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Source+Serif+4:wght@400;500;600&display=swap" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link href="./style.css" rel="stylesheet" />
+
+    <style>
+        /* Affiliations page specific styles */
+        .affiliation-item {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        .affiliation-item:last-child {
+            border-bottom: none;
+        }
+        .affiliation-item h3 {
+            font-family: var(--font-serif);
+            font-size: var(--text-xl);
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            color: var(--ink);
+        }
+        .affiliation-item p {
+            color: var(--gray-600);
+            font-size: var(--text-base);
+            margin-bottom: 0.5rem;
+            max-width: 600px;
+        }
+        .affiliation-item .aff-link {
+            font-family: var(--font-mono);
+            font-size: var(--text-sm);
+            color: var(--gray-400);
+            text-decoration: none;
+            transition: color 0.15s ease;
+        }
+        .affiliation-item .aff-link:hover {
+            color: var(--ink);
+            text-decoration: underline;
+        }
+        [data-bs-theme="dark"] .affiliation-item {
+            border-bottom-color: var(--gray-200);
+        }
+        [data-bs-theme="dark"] .affiliation-item p {
+            color: var(--gray-500);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================================
+    SKIP LINK
+    ============================================================ -->
+    <a href="#main-content" class="skip-link">Skip to content</a>
+
+    <!-- ============================================================
+    SIDEBAR NAVIGATION – LOADED FROM navbar.html
+    ============================================================ -->
+    <div id="navbar-container"></div>
+
+    <!-- ============================================================
+    MOBILE HEADER (visible <1024px)
+    ============================================================ -->
+    <header class="mobile-header d-lg-none">
+        <div class="header-inner">
+            <button class="hamburger" id="hamburgerBtn" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <span class="header-brand">Joshua Mateo</span>
+        </div>
+    </header>
+
+    <!-- ============================================================
+    MOBILE MENU OVERLAY (left-aligned) – clean, no numbers
+    ============================================================ -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-inner">
+            <div class="mobile-brand">
+                <span class="brand-name">Joshua Mateo</span>
+                <span class="brand-sub">creative developer</span>
+            </div>
+            <hr class="mobile-divider" />
+            <a href="./index.html#about" class="nav-link" data-section="about">ABOUT</a>
+            <a href="./index.html#resources" class="nav-link" data-section="resources">RESOURCES</a>
+            <a href="./index.html#collabs" class="nav-link" data-section="collabs">COLLABS</a>
+            <a href="./index.html#consulting" class="nav-link" data-section="consulting">CONSULTING</a>
+            <hr class="mobile-divider" />
+            <a href="./projects.html" class="nav-link" data-section="projects">PROJECTS</a>
+            <a href="./experience.html" class="nav-link" data-section="experience">EXPERIENCE</a>
+            <a href="./stack.html" class="nav-link" data-section="stack">STACK</a>
+            <a href="./certifications.html" class="nav-link" data-section="certifications">CERTIFICATION</a>
+            <a href="./affiliations.html" class="nav-link active" data-section="affiliations">AFFILIATIONS</a>
+            <hr class="mobile-divider" />
+            <button class="mobile-theme-toggle" id="mobileThemeToggle" aria-label="Toggle dark mode">
+                <i class="bi bi-lock-fill" id="mobileThemeIcon"></i>
+                <span class="ms-2">DARK MODE</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- ============================================================
+    MAIN CONTENT
+    ============================================================ -->
+    <main id="main-content" class="main-content">
+
+        <section id="affiliations-page" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-number">08</span>
+                    <span class="section-title">affiliations</span>
+                    <a href="./index.html#affiliations" class="section-link ms-auto">← BACK</a>
+                </div>
+
+                <div class="animate-in">
+                    <p class="lead-bio" style="max-width: 720px; margin-bottom: 2.5rem;">
+                        Associations and communities I'm part of — and the ones I've helped build.
+                    </p>
+
+                    <!-- Affiliation 1 -->
+                    <div class="affiliation-item">
+                        <h3>Analytics &amp; AI Association of the Philippines</h3>
+                        <p>
+                            The national association advancing analytics and AI adoption across the Philippines.
+                        </p>
+                        <a href="#" class="aff-link">skip.php →</a>
+                    </div>
+
+                    <!-- Affiliation 2 -->
+                    <div class="affiliation-item">
+                        <h3>Philippine Software Industry Association</h3>
+                        <p>
+                            The industry body representing the Philippine software and IT services sector.
+                        </p>
+                        <a href="#" class="aff-link">pxiia.org.ph →</a>
+                    </div>
+
+                    <!-- Affiliation 3 -->
+                    <div class="affiliation-item">
+                        <h3>AppBuildersPH</h3>
+                        <p>
+                            A developer community I founded for Filipino app builders and indie hackers.
+                        </p>
+                        <a href="#" class="aff-link">Facebook group →</a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+        FOOTER
+        ============================================================ -->
+        <footer class="site-footer">
+            <div class="container">
+                <p class="footer-text">© 2026 Joshua Mateo. all rights reserved.</p>
+                <div class="footer-links">
+                    <a href="https://github.com/Wieze" target="_blank" class="footer-link">github</a>
+                    <a href="https://www.linkedin.com/in/joshua-joel-mateo-208509399/" target="_blank" class="footer-link">linkedin</a>
+                    <a href="mailto:mateojoshuajoel@gmail.com" class="footer-link">email</a>
+                </div>
+            </div>
+        </footer>
+
+    </main>
+
+    <!-- Bootstrap JS Bundle (CDN) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="./script.js"></script>
+
+    <!-- ============================================================
+    LOAD SIDEBAR FROM navbar.html
+    ============================================================ -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('./navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar-container').innerHTML = data;
+                    if (typeof window.reinitTheme === 'function') {
+                        window.reinitTheme();
+                    }
+                })
+                .catch(error => console.error('Error loading navbar:', error));
+        });
+    </script>
+
+</body>
+</html>

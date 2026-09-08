@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Certifications — Joshua Mateo</title>
+
+    <!-- Bootstrap 5 CSS (CDN) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Source+Serif+4:wght@400;500;600&display=swap" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link href="./style.css" rel="stylesheet" />
+
+    <style>
+        /* Certifications page specific styles */
+        .cert-category {
+            margin-top: 2.5rem;
+        }
+        .cert-category:first-of-type {
+            margin-top: 0;
+        }
+        .cert-category h3 {
+            font-family: var(--font-mono);
+            font-size: var(--text-xs);
+            text-transform: uppercase;
+            letter-spacing: 0.0625em;
+            color: var(--gray-400);
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+            border-bottom: 1px solid var(--gray-200);
+            padding-bottom: 0.5rem;
+        }
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 0.5rem 1.5rem;
+        }
+        .cert-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.4rem 0;
+            border-bottom: 1px solid var(--gray-100);
+            font-size: var(--text-sm);
+            cursor: pointer;
+            transition: background-color 0.15s ease;
+            border-radius: 4px;
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
+        }
+        .cert-item:hover {
+            background-color: var(--gray-50);
+        }
+        .cert-item:last-child {
+            border-bottom: none;
+        }
+        .cert-item .cert-name {
+            font-weight: 500;
+            color: var(--ink);
+            background: none;
+            border: none;
+            padding: 0;
+            font-family: var(--font-mono);
+            font-size: var(--text-sm);
+            text-align: left;
+            flex: 1;
+        }
+        .cert-item .cert-issuer {
+            font-family: var(--font-mono);
+            font-size: var(--text-xs);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--gray-400);
+            margin: 0 1rem;
+            white-space: nowrap;
+        }
+        .cert-item .cert-verify {
+            font-family: var(--font-mono);
+            font-size: var(--text-xs);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--gray-400);
+            text-decoration: none;
+            transition: color 0.15s ease;
+            white-space: nowrap;
+            background: none;
+            border: none;
+            padding: 0;
+        }
+        .cert-item .cert-verify:hover {
+            color: var(--ink);
+        }
+        .cert-trigger {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex: 1;
+            min-width: 0;
+        }
+        .cert-trigger .cert-name {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .certificate-preview {
+            background: var(--gray-50);
+            border-radius: 12px;
+            padding: 12px;
+            border: 1px solid var(--gray-200);
+        }
+        .certificate-preview img {
+            border-radius: 8px;
+            border: 2px solid var(--gray-200);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            background: white;
+            max-width: 100%;
+            max-height: 320px;
+            object-fit: contain;
+        }
+        .modal-content {
+            border-radius: 16px;
+        }
+        [data-bs-theme="dark"] .cert-item {
+            border-bottom-color: var(--gray-200);
+        }
+        [data-bs-theme="dark"] .cert-item:hover {
+            background-color: var(--gray-50);
+        }
+        [data-bs-theme="dark"] .cert-item .cert-verify:hover {
+            color: var(--ink);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================================
+    SKIP LINK
+    ============================================================ -->
+    <a href="#main-content" class="skip-link">Skip to content</a>
+
+    <!-- ============================================================
+    SIDEBAR NAVIGATION – LOADED FROM navbar.html
+    ============================================================ -->
+    <div id="navbar-container"></div>
+
+    <!-- ============================================================
+    MOBILE HEADER (visible <1024px)
+    ============================================================ -->
+    <header class="mobile-header d-lg-none">
+        <div class="header-inner">
+            <button class="hamburger" id="hamburgerBtn" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <span class="header-brand">Joshua Mateo</span>
+        </div>
+    </header>
+
+    <!-- ============================================================
+    MOBILE MENU OVERLAY – no ABOUT link
+    ============================================================ -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-inner">
+            <div class="mobile-brand">
+                <a href="./index.html" class="brand-link" style="text-decoration: none; color: inherit;">
+                    <span class="brand-name">Joshua Mateo</span>
+                    <span class="brand-sub">creative developer</span>
+                </a>
+            </div>
+            <hr class="mobile-divider" />
+            <a href="./index.html#services" class="nav-link" data-section="services">SERVICES</a>
+            <a href="./index.html#resources" class="nav-link" data-section="resources">RESOURCES</a>
+            <a href="./index.html#collabs" class="nav-link" data-section="collabs">COLLABS</a>
+            <a href="./index.html#consulting" class="nav-link" data-section="consulting">CONSULTING</a>
+            <hr class="mobile-divider" />
+            <a href="./projects.html" class="nav-link" data-section="projects">PROJECTS</a>
+            <a href="./experience.html" class="nav-link" data-section="experience">EXPERIENCE</a>
+            <a href="./stack.html" class="nav-link" data-section="stack">STACK</a>
+            <a href="./certifications.html" class="nav-link active" data-section="certifications">CERTIFICATION</a>
+            <a href="./affiliations.html" class="nav-link" data-section="affiliations">AFFILIATIONS</a>
+            <hr class="mobile-divider" />
+            <button class="mobile-theme-toggle" id="mobileThemeToggle" aria-label="Toggle dark mode">
+                <i class="bi bi-lock-fill" id="mobileThemeIcon"></i>
+                <span class="ms-2">DARK MODE</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- ============================================================
+    MAIN CONTENT
+    ============================================================ -->
+    <main id="main-content" class="main-content">
+
+        <section id="certifications-page" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-number">05</span>
+                    <span class="section-title">certifications</span>
+                    <a href="./index.html#certifications" class="section-link ms-auto">← BACK</a>
+                </div>
+
+                <div class="animate-in">
+                    <p class="lead-bio" style="max-width: 720px; margin-bottom: 2.5rem;">
+                        All my certifications — courses, seminars, and workshops — each with its own certificate image.
+                    </p>
+
+                    <!-- ===================== COURSES ===================== -->
+                    <div class="cert-category">
+                        <h3>Courses</h3>
+                        <div class="cert-grid">
+                            <!-- GCI -->
+                            <div class="cert-item" 
+                                 data-bs-toggle="modal" 
+                                 data-bs-target="#certModal" 
+                                 data-cert-name="GCI World April 2026" 
+                                 data-cert-issuer="Matsuo-Iwasawa Lab, UTokyo" 
+                                 data-cert-img="Certificates/Course/GCI.png">
+                                <span class="cert-trigger">
+                                    <span class="cert-name">GCI World April 2026</span>
+                                </span>
+                                <span class="cert-issuer">UTokyo</span>
+                                <a href="#" class="cert-verify" onclick="event.stopPropagation();">VERIFY →</a>
+                            </div>
+
+                            <!-- HTML Essentials -->
+                            <div class="cert-item" 
+                                 data-bs-toggle="modal" 
+                                 data-bs-target="#certModal" 
+                                 data-cert-name="HTML Essentials" 
+                                 data-cert-issuer="Cisco Networking Academy" 
+                                 data-cert-img="Certificates/Course/HTML Essentials.png">
+                                <span class="cert-trigger">
+                                    <span class="cert-name">HTML Essentials</span>
+                                </span>
+                                <span class="cert-issuer">Cisco</span>
+                                <a href="#" class="cert-verify" onclick="event.stopPropagation();">VERIFY →</a>
+                            </div>
+
+                            <!-- Intro to Java (NEW) -->
+                            <div class="cert-item" 
+                                 data-bs-toggle="modal" 
+                                 data-bs-target="#certModal" 
+                                 data-cert-name="Intro to Java" 
+                                 data-cert-issuer="Sololearn" 
+                                 data-cert-img="Certificates/Course/Intro to Java.jpg">
+                                <span class="cert-trigger">
+                                    <span class="cert-name">Intro to Java</span>
+                                </span>
+                                <span class="cert-issuer">Sololearn</span>
+                                <a href="#" class="cert-verify" onclick="event.stopPropagation();">VERIFY →</a>
+                            </div>
+
+                            <!-- Java Intermediate (NEW) -->
+                            <div class="cert-item" 
+                                 data-bs-toggle="modal" 
+                                 data-bs-target="#certModal" 
+                                 data-cert-name="Java Intermediate" 
+                                 data-cert-issuer="Sololearn" 
+                                 data-cert-img="Certificates/Course/Java Intermediate.jpg">
+                                <span class="cert-trigger">
+                                    <span class="cert-name">Java Intermediate</span>
+                                </span>
+                                <span class="cert-issuer">Sololearn</span>
+                                <a href="#" class="cert-verify" onclick="event.stopPropagation();">VERIFY →</a>
+                            </div>
+
+                            <!-- Introduction to Data Science -->
+                            <div class="cert-item" 
+                                 data-bs-toggle="modal" 
+                                 data-bs-target="#certModal" 
+                                 data-cert-name="Introduction to Data Science" 
+                                 data-cert-issuer="Cisco Networking Academy" 
+                                 data-cert-img="Certificates/Course/Introduction to Data Science.png">
+                                <span class="cert-trigger">
+                                    <span class="cert-name">Introduction to Data Science</span>
+                                </span>
+                                <span class="cert-issuer">Cisco</span>
+                                <a href="#" class="cert-verify" onclick="event.stopPropagation();">VERIFY →</a>
+                            </div>
+
+                            <!-- Introduction to Modern AI -->
+                            <div class="cert-item" 
+                                 data-bs-toggle="modal" 
+                                 data-bs-target="#certModal" 
+                                 data-cert-name="Introduction to Modern AI" 
+                                 data-cert-issuer="Cisco Networking Academy" 
+                                 data-cert-img="Certificates/Course/Introduction to Modern AI.png">
+                                <span class="cert-trigger">
+                                    <span class="cert-name">Introduction to Modern AI</span>
+                                </span>
+                                <span class="cert-issuer">Cisco</span>
+                                <a href="#" class="cert-verify" onclick="event.stopPropagation();">VERIFY →</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ===================== SEMINARS ===================== -->
+                    <div class="cert-category">
+                        <h3>Seminars</h3>
+                        <div class="cert-grid">
+                            <!-- 3D Level Design -->
+                            <div class="cert-item" 
+                                 data-bs-toggle="modal" 
+                                 data-bs-target="#certModal" 
+                                 data-cert-name="3D Level Design in Unity" 
+                                 data-cert-issuer="Google Meet Seminar" 
+                                 data-cert-img="Certificates/Seminar/3d Level Design.png">
+                                <span class="cert-trigger">
+                                    <span class="cert-name">3D Level Design in Unity</span>
+                                </span>
+                                <span class="cert-issuer">Seminar</span>
+                                <a href="#" class="cert-verify" onclick="event.stopPropagation();">VERIFY →</a>
+                            </div>
+
+                            <!-- Introduction to Unity -->
+                            <div class="cert-item" 
+                                 data-bs-toggle="modal" 
+                                 data-bs-target="#certModal" 
+                                 data-cert-name="Introduction to Unity Game Engine" 
+                                 data-cert-issuer="Vertexz (BSEMC 4B)" 
+                                 data-cert-img="Certificates/Seminar/Introduction to Unity.png">
+                                <span class="cert-trigger">
+                                    <span class="cert-name">Introduction to Unity Game Engine</span>
+                                </span>
+                                <span class="cert-issuer">Vertexz</span>
+                                <a href="#" class="cert-verify" onclick="event.stopPropagation();">VERIFY →</a>
+                            </div>
+
+                            <!-- Photoshop Essentials -->
+                            <div class="cert-item" 
+                                 data-bs-toggle="modal" 
+                                 data-bs-target="#certModal" 
+                                 data-cert-name="Photoshop Essentials" 
+                                 data-cert-issuer="BSEMC Students, CCSJDM" 
+                                 data-cert-img="Certificates/Seminar/Photoshop Essentials.png">
+                                <span class="cert-trigger">
+                                    <span class="cert-name">Photoshop Essentials</span>
+                                </span>
+                                <span class="cert-issuer">CCSJDM</span>
+                                <a href="#" class="cert-verify" onclick="event.stopPropagation();">VERIFY →</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+        CERTIFICATION MODAL – with image preview (updated)
+        ============================================================ -->
+        <div class="modal fade" id="certModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content" style="background: var(--bs-body-bg); color: var(--bs-body-color); border-color: var(--bs-border-color);">
+                    <div class="modal-header" style="border-bottom-color: var(--bs-border-color);">
+                        <h5 class="modal-title" id="certModalTitle" style="font-weight: 600;">Certification Name</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="filter: var(--bs-btn-close-filter);"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="text-center mb-3 certificate-preview">
+                            <img id="certModalImage" src="" alt="Certificate" 
+                                 style="max-width: 100%; max-height: 350px; border-radius: 8px; border: 2px solid var(--gray-200); box-shadow: 0 4px 20px rgba(0,0,0,0.1); background: white; padding: 8px;" />
+                        </div>
+                        <div class="cert-detail">
+                            <p><strong>Issuer:</strong> <span id="certModalIssuer">Issuer Name</span></p>
+                            <p><strong>Holder:</strong> <span id="certModalHolder">Joshua Mateo</span></p>
+                            <p><strong>Issued:</strong> <span id="certModalDate">August 2026</span></p>
+                        </div>
+                    </div>
+                    <div class="modal-footer" style="border-top-color: var(--bs-border-color);">
+                        <a href="#" class="btn btn-outline-secondary btn-sm" id="certModalVerifyLink" target="_blank">Verify on Issuer Site →</a>
+                        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================================
+        FOOTER
+        ============================================================ -->
+        <footer class="site-footer">
+            <div class="container">
+                <p class="footer-text">© 2026 Joshua Mateo. all rights reserved.</p>
+                <div class="footer-links">
+                    <a href="https://github.com/Wieze" target="_blank" class="footer-link">github</a>
+                    <a href="https://www.linkedin.com/in/joshua-joel-mateo-208509399/" target="_blank" class="footer-link">linkedin</a>
+                    <a href="mailto:mateojoshuajoel@gmail.com" class="footer-link">email</a>
+                </div>
+            </div>
+        </footer>
+
+    </main>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./script.js"></script>
+
+    <!-- Load sidebar -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('./navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar-container').innerHTML = data;
+                    if (typeof window.reinitTheme === 'function') {
+                        window.reinitTheme();
+                    }
+                })
+                .catch(error => console.error('Error loading navbar:', error));
+        });
+    </script>
+
+</body>
+</html>

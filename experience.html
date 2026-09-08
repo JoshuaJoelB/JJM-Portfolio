@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Experience — Joshua Mateo</title>
+
+    <!-- Bootstrap 5 CSS (CDN) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Source+Serif+4:wght@400;500;600&display=swap" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link href="./style.css" rel="stylesheet" />
+
+    <style>
+        /* Experience page specific styles */
+        .exp-timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+        .exp-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0.5rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--gray-200);
+        }
+        .exp-item {
+            position: relative;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--gray-100);
+        }
+        .exp-item:last-child {
+            border-bottom: none;
+        }
+        .exp-item::before {
+            content: '';
+            position: absolute;
+            left: -1.65rem;
+            top: 1.8rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--ink);
+            border: 2px solid var(--background);
+            box-shadow: 0 0 0 2px var(--gray-200);
+        }
+        .exp-company {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        .exp-company-abbr {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--gray-400);
+            background: var(--gray-50);
+            padding: 0.1rem 0.5rem;
+            border-radius: 4px;
+            border: 1px solid var(--gray-200);
+            display: inline-block;
+            margin-bottom: 0.25rem;
+        }
+        .exp-role {
+            font-weight: 500;
+            font-size: 1.05rem;
+        }
+        .exp-date {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--gray-500);
+        }
+        .exp-description {
+            color: var(--gray-600);
+            font-size: 0.95rem;
+            margin: 0.5rem 0 0.75rem;
+        }
+        .exp-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-top: 0.5rem;
+        }
+        .exp-skills .skill-tag {
+            background: var(--gray-50);
+            border: 1px solid var(--gray-200);
+            border-radius: 9999px;
+            padding: 0.1rem 0.75rem;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--gray-600);
+        }
+        .back-link {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--gray-400);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .back-link:hover {
+            color: var(--ink);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================================
+    SKIP LINK
+    ============================================================ -->
+    <a href="#main-content" class="skip-link">Skip to content</a>
+
+    <!-- ============================================================
+    SIDEBAR NAVIGATION – LOADED FROM navbar.html
+    ============================================================ -->
+    <div id="navbar-container"></div>
+
+    <!-- ============================================================
+    MOBILE HEADER (visible <1024px)
+    ============================================================ -->
+    <header class="mobile-header d-lg-none">
+        <div class="header-inner">
+            <button class="hamburger" id="hamburgerBtn" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <span class="header-brand">Joshua Mateo</span>
+        </div>
+    </header>
+
+    <!-- ============================================================
+    MOBILE MENU OVERLAY (left-aligned) – clean, no numbers
+    ============================================================ -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-inner">
+            <div class="mobile-brand">
+                <span class="brand-name">Joshua Mateo</span>
+                <span class="brand-sub">creative developer</span>
+            </div>
+            <hr class="mobile-divider" />
+            <a href="./index.html#about" class="nav-link" data-section="about">ABOUT</a>
+            <a href="./index.html#resources" class="nav-link" data-section="resources">RESOURCES</a>
+            <a href="./index.html#collabs" class="nav-link" data-section="collabs">COLLABS</a>
+            <a href="./index.html#consulting" class="nav-link" data-section="consulting">CONSULTING</a>
+            <hr class="mobile-divider" />
+            <a href="./projects.html" class="nav-link" data-section="projects">PROJECTS</a>
+            <a href="./experience.html" class="nav-link active" data-section="experience">EXPERIENCE</a>
+            <a href="./index.html#stack" class="nav-link" data-section="stack">STACK</a>
+            <a href="./index.html#certifications" class="nav-link" data-section="certifications">CERTIFICATION</a>
+            <a href="./index.html#affiliations" class="nav-link" data-section="affiliations">AFFILIATIONS</a>
+            <hr class="mobile-divider" />
+            <button class="mobile-theme-toggle" id="mobileThemeToggle" aria-label="Toggle dark mode">
+                <i class="bi bi-lock-fill" id="mobileThemeIcon"></i>
+                <span class="ms-2">DARK MODE</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- ============================================================
+    MAIN CONTENT
+    ============================================================ -->
+    <main id="main-content" class="main-content">
+
+        <section id="experience-page" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-number">04</span>
+                    <span class="section-title">full history</span>
+                    <a href="./index.html#experience" class="section-link ms-auto">← BACK</a>
+                </div>
+
+                <div class="animate-in">
+                    <!-- Summary -->
+                    <p class="lead-bio" style="max-width: 720px; margin-bottom: 2.5rem;">
+                        Six years building across AI engineering and full-stack development — from internal GenAI platforms at global enterprises to 60+ products shipped for startups.
+                    </p>
+
+                    <!-- Timeline -->
+                    <div class="exp-timeline">
+
+                        <!-- ===== EXPERIENCE 1: Standard Chartered ===== -->
+                        <div class="exp-item">
+                            <div class="exp-company-abbr">SC</div>
+                            <div class="exp-company">Standard Chartered</div>
+                            <div class="exp-role">Lead AI Engineer</div>
+                            <div class="exp-date">AUG 2025 - PRESENT · 11 MOS</div>
+                            <p class="exp-description">
+                                Driving AI initiatives and system-level solutions across key areas of the business. Focused on scalable, secure, and responsible innovation.
+                            </p>
+                            <div class="exp-skills">
+                                <span class="skill-tag">Artificial Intelligence (AI)</span>
+                                <span class="skill-tag">Generative AI</span>
+                                <span class="skill-tag">+2 skills</span>
+                            </div>
+                        </div>
+
+                        <!-- ===== EXPERIENCE 2: Cambridge University Press ===== -->
+                        <div class="exp-item">
+                            <div class="exp-company-abbr">CU</div>
+                            <div class="exp-company">Cambridge University Press &amp; Assessment</div>
+                            <div class="exp-role">AI Ops Engineer</div>
+                            <div class="exp-date">FEB 2025 - AUG 2025 · 7 MOS</div>
+                            <p class="exp-description">
+                                Pioneered the GenAI Centre of Excellence to deliver scalable AI solutions that support the organization's global education and publishing initiatives.
+                            </p>
+                            <p class="exp-description" style="margin-top: 0.25rem;">
+                                Led GenAI model deployments across Azure Foundry and AWS Bedrock, leveraging Dockerized workflows orchestrated through ECS with Fargate, App Runner, and Amplify. Standardized DevOps practices with CI/CD pipelines, IAM policy hardening, automated EC2/Lambda provisioning, and secure secret management via AWS Secrets Manager and Parameter Store. Integrated centralized observability using CloudWatch for logs, metrics, and alerting.
+                            </p>
+                            <p class="exp-description" style="margin-top: 0.25rem;">
+                                Architected and deployed a WhatsApp-based lesson planner for South African Foundation Phase educators. The solution utilized Turn.io for conversational UX, n8n for workflow automation, and integrated with external APIs for content delivery.
+                            </p>
+                            <div class="exp-skills">
+                                <span class="skill-tag">AWS</span>
+                                <span class="skill-tag">Azure</span>
+                                <span class="skill-tag">Docker</span>
+                                <span class="skill-tag">ECS</span>
+                                <span class="skill-tag">CI/CD</span>
+                                <span class="skill-tag">n8n</span>
+                                <span class="skill-tag">GenAI</span>
+                            </div>
+                        </div>
+
+                        <!-- ===== EXPERIENCE 3: Core Technology ===== -->
+                        <div class="exp-item">
+                            <div class="exp-company">Core Technology</div>
+                            <div class="exp-role">Senior Full-Stack Developer</div>
+                            <div class="exp-date">2024 · 1 YR</div>
+                            <p class="exp-description">
+                                Built and maintained large‑scale web applications for enterprise clients. Led a team of 5 developers, implemented microservices architecture, and improved deployment pipelines.
+                            </p>
+                            <div class="exp-skills">
+                                <span class="skill-tag">Node.js</span>
+                                <span class="skill-tag">React</span>
+                                <span class="skill-tag">Python</span>
+                                <span class="skill-tag">PostgreSQL</span>
+                                <span class="skill-tag">Docker</span>
+                                <span class="skill-tag">Kubernetes</span>
+                            </div>
+                        </div>
+
+                        <!-- ===== EXPERIENCE 4: PocketDevs ===== -->
+                        <div class="exp-item">
+                            <div class="exp-company">PocketDevs</div>
+                            <div class="exp-role">Software Engineering Lead</div>
+                            <div class="exp-date">2022 · 2 YRS</div>
+                            <p class="exp-description">
+                                Led the development of 60+ mobile and web products for startups. Established coding standards, mentored junior engineers, and introduced agile best practices.
+                            </p>
+                            <div class="exp-skills">
+                                <span class="skill-tag">React Native</span>
+                                <span class="skill-tag">Laravel</span>
+                                <span class="skill-tag">Firebase</span>
+                                <span class="skill-tag">GraphQL</span>
+                                <span class="skill-tag">Team Leadership</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+        FOOTER
+        ============================================================ -->
+        <footer class="site-footer">
+            <div class="container">
+                <p class="footer-text">© 2026 Joshua Mateo. all rights reserved.</p>
+                <div class="footer-links">
+                    <a href="https://github.com/Wieze" target="_blank" class="footer-link">github</a>
+                    <a href="https://www.linkedin.com/in/joshua-joel-mateo-208509399/" target="_blank" class="footer-link">linkedin</a>
+                    <a href="mailto:mateojoshuajoel@gmail.com" class="footer-link">email</a>
+                </div>
+            </div>
+        </footer>
+
+    </main>
+
+    <!-- Bootstrap JS Bundle (CDN) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="./script.js"></script>
+
+    <!-- ============================================================
+    LOAD SIDEBAR FROM navbar.html
+    ============================================================ -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('./navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar-container').innerHTML = data;
+                    if (typeof window.reinitTheme === 'function') {
+                        window.reinitTheme();
+                    }
+                })
+                .catch(error => console.error('Error loading navbar:', error));
+        });
+    </script>
+
+</body>
+</html>

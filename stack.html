@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stack — Joshua Mateo</title>
+
+    <!-- Bootstrap 5 CSS (CDN) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Source+Serif+4:wght@400;500;600&display=swap" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link href="./style.css" rel="stylesheet" />
+
+    <style>
+        /* Stack page specific styles */
+        .stack-category {
+            margin-top: 2.5rem;
+        }
+        .stack-category:first-of-type {
+            margin-top: 0;
+        }
+        .stack-category h3 {
+            font-family: var(--font-mono);
+            font-size: var(--text-xs);
+            text-transform: uppercase;
+            letter-spacing: 0.0625em;
+            color: var(--gray-400);
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+            border-bottom: 1px solid var(--gray-200);
+            padding-bottom: 0.5rem;
+        }
+        .stack-category .stack-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .stack-category .stack-tag {
+            background-color: var(--gray-50);
+            border: 1px solid var(--gray-200);
+            border-radius: 9999px;
+            padding: 0.25rem 1rem;
+            font-family: var(--font-mono);
+            font-size: var(--text-sm);
+            color: var(--ink);
+            transition: background-color 0.15s ease, border-color 0.15s ease;
+        }
+        .stack-category .stack-tag:hover {
+            background-color: var(--gray-100);
+            border-color: var(--gray-300);
+        }
+        [data-bs-theme="dark"] .stack-category .stack-tag {
+            background-color: var(--gray-50);
+            border-color: var(--gray-200);
+        }
+        [data-bs-theme="dark"] .stack-category .stack-tag:hover {
+            background-color: var(--gray-100);
+            border-color: var(--gray-300);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================================
+    SKIP LINK
+    ============================================================ -->
+    <a href="#main-content" class="skip-link">Skip to content</a>
+
+    <!-- ============================================================
+    SIDEBAR NAVIGATION – LOADED FROM navbar.html
+    ============================================================ -->
+    <div id="navbar-container"></div>
+
+    <!-- ============================================================
+    MOBILE HEADER (visible <1024px)
+    ============================================================ -->
+    <header class="mobile-header d-lg-none">
+        <div class="header-inner">
+            <button class="hamburger" id="hamburgerBtn" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <span class="header-brand">Joshua Mateo</span>
+        </div>
+    </header>
+
+    <!-- ============================================================
+    MOBILE MENU OVERLAY (left-aligned) – clean, no numbers
+    ============================================================ -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-inner">
+            <div class="mobile-brand">
+                <span class="brand-name">Joshua Mateo</span>
+                <span class="brand-sub">creative developer</span>
+            </div>
+            <hr class="mobile-divider" />
+            <a href="./index.html#about" class="nav-link" data-section="about">ABOUT</a>
+            <a href="./index.html#resources" class="nav-link" data-section="resources">RESOURCES</a>
+            <a href="./index.html#collabs" class="nav-link" data-section="collabs">COLLABS</a>
+            <a href="./index.html#consulting" class="nav-link" data-section="consulting">CONSULTING</a>
+            <hr class="mobile-divider" />
+            <a href="./projects.html" class="nav-link" data-section="projects">PROJECTS</a>
+            <a href="./experience.html" class="nav-link" data-section="experience">EXPERIENCE</a>
+            <a href="./stack.html" class="nav-link active" data-section="stack">STACK</a>
+            <a href="./index.html#certifications" class="nav-link" data-section="certifications">CERTIFICATION</a>
+            <a href="./index.html#affiliations" class="nav-link" data-section="affiliations">AFFILIATIONS</a>
+            <hr class="mobile-divider" />
+            <button class="mobile-theme-toggle" id="mobileThemeToggle" aria-label="Toggle dark mode">
+                <i class="bi bi-lock-fill" id="mobileThemeIcon"></i>
+                <span class="ms-2">DARK MODE</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- ============================================================
+    MAIN CONTENT
+    ============================================================ -->
+    <main id="main-content" class="main-content">
+
+        <section id="stack-page" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-number">05</span>
+                    <span class="section-title">stack</span>
+                    <a href="./index.html#stack" class="section-link ms-auto">← BACK</a>
+                </div>
+
+                <div class="animate-in">
+                    <p class="lead-bio" style="max-width: 720px; margin-bottom: 2.5rem;">
+                        The tools, frameworks, and platforms I reach for — across the front end, back end, infrastructure, and AI.
+                    </p>
+
+                    <!-- FRONTEND -->
+                    <div class="stack-category">
+                        <h3>Frontend</h3>
+                        <div class="stack-tags">
+                            <span class="stack-tag">JavaScript</span>
+                            <span class="stack-tag">TypeScript</span>
+                            <span class="stack-tag">React</span>
+                            <span class="stack-tag">Next.js</span>
+                            <span class="stack-tag">Vue.js</span>
+                            <span class="stack-tag">Tailwind CSS</span>
+                            <span class="stack-tag">SCSS</span>
+                            <span class="stack-tag">Styled Components</span>
+                            <span class="stack-tag">Vite</span>
+                            <span class="stack-tag">Webpack</span>
+                            <span class="stack-tag">ESLint</span>
+                            <span class="stack-tag">Prettier</span>
+                        </div>
+                    </div>
+
+                    <!-- BACKEND -->
+                    <div class="stack-category">
+                        <h3>Backend</h3>
+                        <div class="stack-tags">
+                            <span class="stack-tag">Node.js</span>
+                            <span class="stack-tag">Python</span>
+                            <span class="stack-tag">Java</span>
+                            <span class="stack-tag">PHP</span>
+                            <span class="stack-tag">Express.js</span>
+                            <span class="stack-tag">NestJS</span>
+                            <span class="stack-tag">FastAPI</span>
+                            <span class="stack-tag">Spring Boot</span>
+                            <span class="stack-tag">Laravel</span>
+                            <span class="stack-tag">PostgreSQL</span>
+                            <span class="stack-tag">MySQL</span>
+                            <span class="stack-tag">MongoDB</span>
+                            <span class="stack-tag">DynamoDB</span>
+                            <span class="stack-tag">OAuth</span>
+                            <span class="stack-tag">JWT</span>
+                            <span class="stack-tag">LDAP</span>
+                            <span class="stack-tag">REST</span>
+                            <span class="stack-tag">GraphQL</span>
+                            <span class="stack-tag">gRPC</span>
+                            <span class="stack-tag">AWS Lambda</span>
+                        </div>
+                    </div>
+
+                    <!-- DEVOPS & CLOUD -->
+                    <div class="stack-category">
+                        <h3>DevOps &amp; Cloud</h3>
+                        <div class="stack-tags">
+                            <span class="stack-tag">AWS</span>
+                            <span class="stack-tag">GCP</span>
+                            <span class="stack-tag">Azure</span>
+                            <span class="stack-tag">GitHub Actions</span>
+                            <span class="stack-tag">Jenkins</span>
+                            <span class="stack-tag">GitLab CI</span>
+                            <span class="stack-tag">Terraform</span>
+                            <span class="stack-tag">AWS CloudFormation</span>
+                            <span class="stack-tag">Docker</span>
+                            <span class="stack-tag">Kubernetes</span>
+                            <span class="stack-tag">Prometheus</span>
+                            <span class="stack-tag">Grafana</span>
+                            <span class="stack-tag">Datadog</span>
+                        </div>
+                    </div>
+
+                    <!-- AI & MACHINE LEARNING -->
+                    <div class="stack-category">
+                        <h3>AI &amp; Machine Learning</h3>
+                        <div class="stack-tags">
+                            <span class="stack-tag">TensorFlow</span>
+                            <span class="stack-tag">PyTorch</span>
+                            <span class="stack-tag">LangChain</span>
+                            <span class="stack-tag">Transformers</span>
+                            <span class="stack-tag">OpenAI</span>
+                            <span class="stack-tag">Anthropic</span>
+                            <span class="stack-tag">Mistral</span>
+                            <span class="stack-tag">Hugging Face</span>
+                            <span class="stack-tag">LlamaIndex</span>
+                            <span class="stack-tag">AutoGPT</span>
+                            <span class="stack-tag">Claude Code</span>
+                            <span class="stack-tag">Codex</span>
+                        </div>
+                    </div>
+
+                    <!-- SECURITY & IDENTITY -->
+                    <div class="stack-category">
+                        <h3>Security &amp; Identity</h3>
+                        <div class="stack-tags">
+                            <span class="stack-tag">AWS IAM</span>
+                            <span class="stack-tag">Azure AD</span>
+                            <span class="stack-tag">Okta</span>
+                            <span class="stack-tag">SAP CDC</span>
+                            <span class="stack-tag">Auth0</span>
+                            <span class="stack-tag">Cognito</span>
+                            <span class="stack-tag">AES</span>
+                            <span class="stack-tag">RSA</span>
+                            <span class="stack-tag">SHA</span>
+                            <span class="stack-tag">GDPR</span>
+                            <span class="stack-tag">SOC 2</span>
+                            <span class="stack-tag">ISO 27001</span>
+                        </div>
+                    </div>
+
+                    <!-- CMS & NO-CODE -->
+                    <div class="stack-category">
+                        <h3>CMS &amp; No-Code</h3>
+                        <div class="stack-tags">
+                            <span class="stack-tag">WordPress</span>
+                            <span class="stack-tag">Strapi</span>
+                            <span class="stack-tag">Bubble</span>
+                            <span class="stack-tag">Webflow</span>
+                            <span class="stack-tag">Microsoft Power Platform</span>
+                            <span class="stack-tag">n8n</span>
+                        </div>
+                    </div>
+
+                    <!-- DEVELOPER TOOLS -->
+                    <div class="stack-category">
+                        <h3>Developer Tools</h3>
+                        <div class="stack-tags">
+                            <span class="stack-tag">Git</span>
+                            <span class="stack-tag">GitHub</span>
+                            <span class="stack-tag">GitLab</span>
+                            <span class="stack-tag">Bitbucket</span>
+                            <span class="stack-tag">VS Code</span>
+                            <span class="stack-tag">JetBrains IntelliJ</span>
+                            <span class="stack-tag">PyCharm</span>
+                            <span class="stack-tag">Slack</span>
+                            <span class="stack-tag">Discord</span>
+                            <span class="stack-tag">Teams</span>
+                            <span class="stack-tag">JIRA</span>
+                            <span class="stack-tag">Trello</span>
+                            <span class="stack-tag">ClickUp</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+        FOOTER
+        ============================================================ -->
+        <footer class="site-footer">
+            <div class="container">
+                <p class="footer-text">© 2026 Joshua Mateo. all rights reserved.</p>
+                <div class="footer-links">
+                    <a href="https://github.com/Wieze" target="_blank" class="footer-link">github</a>
+                    <a href="https://www.linkedin.com/in/joshua-joel-mateo-208509399/" target="_blank" class="footer-link">linkedin</a>
+                    <a href="mailto:mateojoshuajoel@gmail.com" class="footer-link">email</a>
+                </div>
+            </div>
+        </footer>
+
+    </main>
+
+    <!-- Bootstrap JS Bundle (CDN) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="./script.js"></script>
+
+    <!-- ============================================================
+    LOAD SIDEBAR FROM navbar.html
+    ============================================================ -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('./navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar-container').innerHTML = data;
+                    if (typeof window.reinitTheme === 'function') {
+                        window.reinitTheme();
+                    }
+                })
+                .catch(error => console.error('Error loading navbar:', error));
+        });
+    </script>
+
+</body>
+</html>
