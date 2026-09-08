@@ -340,166 +340,194 @@
         </section>
 
         <!-- ============================================================
-        PROJECT MODALS – with auto‑slide carousels + next/prev
-        ============================================================ -->
+PROJECT MODALS – WITH PREV/NEXT CONTROLS
+============================================================ -->
 
-        <!-- MODAL 1: Gray Job -->
-        <div class="modal fade" id="modalGrayJob" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-lg">
-                <div class="modal-content" style="background: var(--bs-body-bg); color: var(--bs-body-color); border-color: var(--bs-border-color);">
-                    <div class="modal-header" style="border-bottom-color: var(--bs-border-color);">
-                        <h5 class="modal-title" style="font-weight: 600;">Gray Job</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="filter: var(--bs-btn-close-filter);"></button>
+<!-- Modal: Gray Job -->
+<div class="modal fade" id="modalGrayJob" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content" style="background: var(--bs-body-bg); color: var(--bs-body-color); border-color: var(--bs-border-color);">
+            <div class="modal-header" style="border-bottom-color: var(--bs-border-color);">
+                <h5 class="modal-title" style="font-weight: 600;">Gray Job</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="filter: var(--bs-btn-close-filter);"></button>
+            </div>
+            <div class="modal-body">
+                <div id="carouselGrayJob" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselGrayJob" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselGrayJob" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselGrayJob" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                        <button type="button" data-bs-target="#carouselGrayJob" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                        <button type="button" data-bs-target="#carouselGrayJob" data-bs-slide-to="4" aria-label="Slide 5"></button>
                     </div>
-                    <div class="modal-body">
-                        <div id="carouselGrayJob" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active"><img src="img/projects/grayjob/1.png" class="d-block w-100" alt="Gray Job 1"></div>
-                                <div class="carousel-item"><img src="img/projects/grayjob/2.png" class="d-block w-100" alt="Gray Job 2"></div>
-                                <div class="carousel-item"><img src="img/projects/grayjob/3.png" class="d-block w-100" alt="Gray Job 3"></div>
-                                <div class="carousel-item"><img src="img/projects/grayjob/4.png" class="d-block w-100" alt="Gray Job 4"></div>
-                                <div class="carousel-item"><img src="img/projects/grayjob/5.jpg" class="d-block w-100" alt="Gray Job 5"></div>
-                            </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselGrayJob" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#carouselGrayJob" data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
-                            </button>
-                        </div>
-                        <hr style="border-color: var(--bs-border-color);" />
-                        <div class="d-flex flex-wrap gap-1 mb-2">
-                            <span class="project-badge">GAME</span>
-                            <span class="project-badge">NARRATIVE</span>
-                            <span class="project-badge">AWARD-WINNING</span>
-                        </div>
-                        <p><strong>Description:</strong> A narrative-driven security simulator with a dark, atmospheric tone. Winner of People's Choice Award, Most Innovative Gameplay, Best Narrative Gameplay, and Best Technical Achievement.</p>
-                        <p><strong>Tech Stack:</strong> Unity, C#, Custom UI</p>
-                        <p><strong>Links:</strong> <a href="#" class="btn btn-outline-secondary btn-sm mt-1">Play Now</a></p>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active"><img src="img/projects/grayjob/1.png" class="d-block w-100" alt="Gray Job 1"></div>
+                        <div class="carousel-item"><img src="img/projects/grayjob/2.png" class="d-block w-100" alt="Gray Job 2"></div>
+                        <div class="carousel-item"><img src="img/projects/grayjob/3.png" class="d-block w-100" alt="Gray Job 3"></div>
+                        <div class="carousel-item"><img src="img/projects/grayjob/4.png" class="d-block w-100" alt="Gray Job 4"></div>
+                        <div class="carousel-item"><img src="img/projects/grayjob/5.png" class="d-block w-100" alt="Gray Job 5"></div>
                     </div>
+                    <!-- PREV/NEXT CONTROLS -->
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselGrayJob" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselGrayJob" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
                 </div>
+                <hr style="border-color: var(--bs-border-color);" />
+                <div class="d-flex flex-wrap gap-1 mb-2">
+                    <span class="project-badge">GAME</span>
+                    <span class="project-badge">NARRATIVE</span>
+                    <span class="project-badge">AWARD-WINNING</span>
+                </div>
+                <p><strong>Description:</strong> A narrative-driven security simulator with a dark, atmospheric tone. Winner of People's Choice Award, Most Innovative Gameplay, Best Narrative Gameplay, and Best Technical Achievement.</p>
+                <p><strong>Tech Stack:</strong> Unity, C#, Custom UI</p>
+                <p><strong>Links:</strong> <a href="#" class="btn btn-outline-secondary btn-sm mt-1">Play Now</a></p>
             </div>
         </div>
+    </div>
+</div>
 
-        <!-- MODAL 2: GMS -->
-        <div class="modal fade" id="modalGMS" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-lg">
-                <div class="modal-content" style="background: var(--bs-body-bg); color: var(--bs-body-color); border-color: var(--bs-border-color);">
-                    <div class="modal-header" style="border-bottom-color: var(--bs-border-color);">
-                        <h5 class="modal-title" style="font-weight: 600;">Grade Management System</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="filter: var(--bs-btn-close-filter);"></button>
+<!-- Modal: GMS -->
+<div class="modal fade" id="modalGMS" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content" style="background: var(--bs-body-bg); color: var(--bs-body-color); border-color: var(--bs-border-color);">
+            <div class="modal-header" style="border-bottom-color: var(--bs-border-color);">
+                <h5 class="modal-title" style="font-weight: 600;">Grade Management System</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="filter: var(--bs-btn-close-filter);"></button>
+            </div>
+            <div class="modal-body">
+                <div id="carouselGMS" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselGMS" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselGMS" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselGMS" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                        <button type="button" data-bs-target="#carouselGMS" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                        <button type="button" data-bs-target="#carouselGMS" data-bs-slide-to="4" aria-label="Slide 5"></button>
                     </div>
-                    <div class="modal-body">
-                        <div id="carouselGMS" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active"><img src="img/projects/gms/1.png" class="d-block w-100" alt="GMS 1"></div>
-                                <div class="carousel-item"><img src="img/projects/gms/2.png" class="d-block w-100" alt="GMS 2"></div>
-                                <div class="carousel-item"><img src="img/projects/gms/3.png" class="d-block w-100" alt="GMS 3"></div>
-                                <div class="carousel-item"><img src="img/projects/gms/4.png" class="d-block w-100" alt="GMS 4"></div>
-                                <div class="carousel-item"><img src="img/projects/gms/5.png" class="d-block w-100" alt="GMS 5"></div>
-                            </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselGMS" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#carouselGMS" data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
-                            </button>
-                        </div>
-                        <hr style="border-color: var(--bs-border-color);" />
-                        <div class="d-flex flex-wrap gap-1 mb-2">
-                            <span class="project-badge">EDUCATION</span>
-                            <span class="project-badge">AI CHATBOT</span>
-                        </div>
-                        <p><strong>Description:</strong> A school management platform with AI chatbot integration for student support. Includes role-based access for admin, teachers, and students, with grade tracking and reporting.</p>
-                        <p><strong>Tech Stack:</strong> PHP, MySQL, JavaScript, AI Chatbot API</p>
-                        <p><strong>Links:</strong> <a href="#" class="btn btn-outline-secondary btn-sm mt-1">Live Demo</a></p>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active"><img src="img/projects/gms/1.png" class="d-block w-100" alt="GMS 1"></div>
+                        <div class="carousel-item"><img src="img/projects/gms/2.png" class="d-block w-100" alt="GMS 2"></div>
+                        <div class="carousel-item"><img src="img/projects/gms/3.png" class="d-block w-100" alt="GMS 3"></div>
+                        <div class="carousel-item"><img src="img/projects/gms/4.png" class="d-block w-100" alt="GMS 4"></div>
+                        <div class="carousel-item"><img src="img/projects/gms/5.png" class="d-block w-100" alt="GMS 5"></div>
                     </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselGMS" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselGMS" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
                 </div>
+                <hr style="border-color: var(--bs-border-color);" />
+                <div class="d-flex flex-wrap gap-1 mb-2">
+                    <span class="project-badge">EDUCATION</span>
+                    <span class="project-badge">AI CHATBOT</span>
+                </div>
+                <p><strong>Description:</strong> A school management platform with AI chatbot integration for student support. Includes role-based access for admin, teachers, and students, with grade tracking and reporting.</p>
+                <p><strong>Tech Stack:</strong> PHP, MySQL, JavaScript, AI Chatbot API</p>
+                <p><strong>Links:</strong> <a href="#" class="btn btn-outline-secondary btn-sm mt-1">Live Demo</a></p>
             </div>
         </div>
+    </div>
+</div>
 
-        <!-- MODAL 3: ABIBYSS -->
-        <div class="modal fade" id="modalAbibyss" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-lg">
-                <div class="modal-content" style="background: var(--bs-body-bg); color: var(--bs-body-color); border-color: var(--bs-border-color);">
-                    <div class="modal-header" style="border-bottom-color: var(--bs-border-color);">
-                        <h5 class="modal-title" style="font-weight: 600;">ABIBYSS Store</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="filter: var(--bs-btn-close-filter);"></button>
+<!-- Modal: ABIBYSS -->
+<div class="modal fade" id="modalAbibyss" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content" style="background: var(--bs-body-bg); color: var(--bs-body-color); border-color: var(--bs-border-color);">
+            <div class="modal-header" style="border-bottom-color: var(--bs-border-color);">
+                <h5 class="modal-title" style="font-weight: 600;">ABIBYSS Store</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="filter: var(--bs-btn-close-filter);"></button>
+            </div>
+            <div class="modal-body">
+                <div id="carouselAbibyss" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselAbibyss" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselAbibyss" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselAbibyss" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                        <button type="button" data-bs-target="#carouselAbibyss" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                        <button type="button" data-bs-target="#carouselAbibyss" data-bs-slide-to="4" aria-label="Slide 5"></button>
                     </div>
-                    <div class="modal-body">
-                        <div id="carouselAbibyss" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active"><img src="img/projects/abibyss/1.png" class="d-block w-100" alt="ABIBYSS 1"></div>
-                                <div class="carousel-item"><img src="img/projects/abibyss/2.png" class="d-block w-100" alt="ABIBYSS 2"></div>
-                                <div class="carousel-item"><img src="img/projects/abibyss/3.png" class="d-block w-100" alt="ABIBYSS 3"></div>
-                                <div class="carousel-item"><img src="img/projects/abibyss/4.png" class="d-block w-100" alt="ABIBYSS 4"></div>
-                                <div class="carousel-item"><img src="img/projects/abibyss/5.png" class="d-block w-100" alt="ABIBYSS 5"></div>
-                            </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselAbibyss" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#carouselAbibyss" data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
-                            </button>
-                        </div>
-                        <hr style="border-color: var(--bs-border-color);" />
-                        <div class="d-flex flex-wrap gap-1 mb-2">
-                            <span class="project-badge">E-COMMERCE</span>
-                            <span class="project-badge">SHOP MANAGEMENT</span>
-                        </div>
-                        <p><strong>Description:</strong> An online shop management system with cart, checkout, and admin panel. Users can browse products, add to cart, and place orders with a streamlined flow.</p>
-                        <p><strong>Tech Stack:</strong> PHP, MySQL, HTML, CSS, JavaScript</p>
-                        <p><strong>Links:</strong> <a href="#" class="btn btn-outline-secondary btn-sm mt-1">View Demo</a></p>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active"><img src="img/projects/abibyss/1.png" class="d-block w-100" alt="ABIBYSS 1"></div>
+                        <div class="carousel-item"><img src="img/projects/abibyss/2.png" class="d-block w-100" alt="ABIBYSS 2"></div>
+                        <div class="carousel-item"><img src="img/projects/abibyss/3.png" class="d-block w-100" alt="ABIBYSS 3"></div>
+                        <div class="carousel-item"><img src="img/projects/abibyss/4.png" class="d-block w-100" alt="ABIBYSS 4"></div>
+                        <div class="carousel-item"><img src="img/projects/abibyss/5.png" class="d-block w-100" alt="ABIBYSS 5"></div>
                     </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselAbibyss" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselAbibyss" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
                 </div>
+                <hr style="border-color: var(--bs-border-color);" />
+                <div class="d-flex flex-wrap gap-1 mb-2">
+                    <span class="project-badge">E-COMMERCE</span>
+                    <span class="project-badge">SHOP MANAGEMENT</span>
+                </div>
+                <p><strong>Description:</strong> An online shop management system with cart, checkout, and admin panel. Users can browse products, add to cart, and place orders with a streamlined flow.</p>
+                <p><strong>Tech Stack:</strong> PHP, MySQL, HTML, CSS, JavaScript</p>
+                <p><strong>Links:</strong> <a href="#" class="btn btn-outline-secondary btn-sm mt-1">View Demo</a></p>
             </div>
         </div>
+    </div>
+</div>
 
-        <!-- MODAL 4: Baryabin -->
-        <div class="modal fade" id="modalBaryabin" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-lg">
-                <div class="modal-content" style="background: var(--bs-body-bg); color: var(--bs-body-color); border-color: var(--bs-border-color);">
-                    <div class="modal-header" style="border-bottom-color: var(--bs-border-color);">
-                        <h5 class="modal-title" style="font-weight: 600;">Baryabin</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="filter: var(--bs-btn-close-filter);"></button>
+<!-- Modal: Baryabin -->
+<div class="modal fade" id="modalBaryabin" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content" style="background: var(--bs-body-bg); color: var(--bs-body-color); border-color: var(--bs-border-color);">
+            <div class="modal-header" style="border-bottom-color: var(--bs-border-color);">
+                <h5 class="modal-title" style="font-weight: 600;">Baryabin</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="filter: var(--bs-btn-close-filter);"></button>
+            </div>
+            <div class="modal-body">
+                <div id="carouselBaryabin" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselBaryabin" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselBaryabin" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselBaryabin" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                        <button type="button" data-bs-target="#carouselBaryabin" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                        <button type="button" data-bs-target="#carouselBaryabin" data-bs-slide-to="4" aria-label="Slide 5"></button>
                     </div>
-                    <div class="modal-body">
-                        <div id="carouselBaryabin" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active"><img src="img/projects/baryabin/1.png" class="d-block w-100" alt="Baryabin 1"></div>
-                                <div class="carousel-item"><img src="img/projects/baryabin/2.png" class="d-block w-100" alt="Baryabin 2"></div>
-                                <div class="carousel-item"><img src="img/projects/baryabin/3.png" class="d-block w-100" alt="Baryabin 3"></div>
-                                <div class="carousel-item"><img src="img/projects/baryabin/4.png" class="d-block w-100" alt="Baryabin 4"></div>
-                                <div class="carousel-item"><img src="img/projects/baryabin/5.jpg" class="d-block w-100" alt="Baryabin 5"></div>
-                            </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselBaryabin" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#carouselBaryabin" data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
-                            </button>
-                        </div>
-                        <hr style="border-color: var(--bs-border-color);" />
-                        <div class="d-flex flex-wrap gap-1 mb-2">
-                            <span class="project-badge">ECO-TECH</span>
-                            <span class="project-badge">RECYCLING</span>
-                        </div>
-                        <p><strong>Description:</strong> An eco-friendly app that turns trash into cash through recycling. Users can earn points, track impact, and sell recyclable items.</p>
-                        <p><strong>Tech Stack:</strong> Flutter, Firebase, API Integration</p>
-                        <p><strong>Links:</strong> <a href="#" class="btn btn-outline-secondary btn-sm mt-1">Download App</a></p>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active"><img src="img/projects/baryabin/1.png" class="d-block w-100" alt="Baryabin 1"></div>
+                        <div class="carousel-item"><img src="img/projects/baryabin/2.png" class="d-block w-100" alt="Baryabin 2"></div>
+                        <div class="carousel-item"><img src="img/projects/baryabin/3.png" class="d-block w-100" alt="Baryabin 3"></div>
+                        <div class="carousel-item"><img src="img/projects/baryabin/4.png" class="d-block w-100" alt="Baryabin 4"></div>
+                        <div class="carousel-item"><img src="img/projects/baryabin/5.png" class="d-block w-100" alt="Baryabin 5"></div>
                     </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselBaryabin" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselBaryabin" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
                 </div>
+                <hr style="border-color: var(--bs-border-color);" />
+                <div class="d-flex flex-wrap gap-1 mb-2">
+                    <span class="project-badge">ECO-TECH</span>
+                    <span class="project-badge">RECYCLING</span>
+                </div>
+                <p><strong>Description:</strong> An eco-friendly app that turns trash into cash through recycling. Users can earn points, track impact, and sell recyclable items.</p>
+                <p><strong>Tech Stack:</strong> Flutter, Firebase, API Integration</p>
+                <p><strong>Links:</strong> <a href="#" class="btn btn-outline-secondary btn-sm mt-1">Download App</a></p>
             </div>
         </div>
-
+    </div>
+</div>
         <!-- ============================================================
         FOOTER
         ============================================================ -->
