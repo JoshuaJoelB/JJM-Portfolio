@@ -98,48 +98,49 @@
     window.addEventListener('load', updateActiveNav);
 
     // ============================================================
-    // CERTIFICATION MODAL – Populate data + image
-    // ============================================================
-    var certModal = document.getElementById('certModal');
-    if (certModal) {
-        certModal.addEventListener('show.bs.modal', function(event) {
-            var trigger = event.relatedTarget;
-            if (trigger) {
-                var name = trigger.getAttribute('data-cert-name') || 'Certification Name';
-                var issuer = trigger.getAttribute('data-cert-issuer') || 'Issuer Name';
-                var imgSrc = trigger.getAttribute('data-cert-img') || '';
+// CERTIFICATION MODAL – Populate data + image
+// ============================================================
+var certModal = document.getElementById('certModal');
+if (certModal) {
+    certModal.addEventListener('show.bs.modal', function(event) {
+        var trigger = event.relatedTarget;
+        if (trigger) {
+            var name = trigger.getAttribute('data-cert-name') || 'Certification Name';
+            var issuer = trigger.getAttribute('data-cert-issuer') || 'Issuer Name';
+            var imgSrc = trigger.getAttribute('data-cert-img') || '';
+            var date = trigger.getAttribute('data-cert-date') || 'August 2026';
 
-                var titleEl = document.getElementById('certModalTitle');
-                var issuerEl = document.getElementById('certModalIssuer');
-                var holderEl = document.getElementById('certModalHolder');
-                var dateEl = document.getElementById('certModalDate');
-                var imgEl = document.getElementById('certModalImage');
-                var verifyLink = document.getElementById('certModalVerifyLink');
+            var titleEl = document.getElementById('certModalTitle');
+            var issuerEl = document.getElementById('certModalIssuer');
+            var holderEl = document.getElementById('certModalHolder');
+            var dateEl = document.getElementById('certModalDate');
+            var imgEl = document.getElementById('certModalImage');
+            var verifyLink = document.getElementById('certModalVerifyLink');
 
-                if (titleEl) titleEl.textContent = name;
-                if (issuerEl) issuerEl.textContent = issuer;
-                if (holderEl) holderEl.textContent = 'Joshua Mateo';
-                if (dateEl) dateEl.textContent = 'August 2026';
+            if (titleEl) titleEl.textContent = name;
+            if (issuerEl) issuerEl.textContent = issuer;
+            if (holderEl) holderEl.textContent = 'Joshua Mateo';
+            if (dateEl) dateEl.textContent = date;
 
-                if (imgEl) {
-                    if (imgSrc) {
-                        imgEl.src = imgSrc;
-                        imgEl.style.display = 'inline';
-                        imgEl.onerror = function() {
-                            this.style.display = 'none';
-                        };
-                    } else {
-                        imgEl.style.display = 'none';
-                    }
-                }
-
-                if (verifyLink) {
-                    verifyLink.href = '#';
-                    verifyLink.textContent = 'Verify on ' + issuer + ' →';
+            if (imgEl) {
+                if (imgSrc) {
+                    imgEl.src = imgSrc;
+                    imgEl.style.display = 'inline';
+                    imgEl.onerror = function() {
+                        this.style.display = 'none';
+                    };
+                } else {
+                    imgEl.style.display = 'none';
                 }
             }
-        });
-    }
+
+            if (verifyLink) {
+                verifyLink.href = '#';
+                verifyLink.textContent = 'Verify on ' + issuer + ' →';
+            }
+        }
+    });
+}
 
     // ============================================================
     // SIDEBAR LOADER – with reinit function
