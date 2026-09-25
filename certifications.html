@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Experience — Joshua Mateo</title>
+    <title>Certifications — Joshua Mateo</title>
 
     <!-- Bootstrap 5 CSS (CDN) -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -16,84 +16,122 @@
     <link href="./style.css" rel="stylesheet" />
 
     <style>
-        /* Experience page specific styles */
-        .exp-timeline {
-            position: relative;
-            padding-left: 2rem;
+        /* Certifications page specific styles */
+        .cert-category {
+            margin-top: 2.5rem;
         }
-        .exp-timeline::before {
-            content: '';
-            position: absolute;
-            left: 0.5rem;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: var(--gray-200);
+        .cert-category:first-of-type {
+            margin-top: 0;
         }
-        .exp-item {
-            position: relative;
-            padding: 1.5rem 0;
-            border-bottom: 1px solid var(--gray-100);
-        }
-        .exp-item:last-child {
-            border-bottom: none;
-        }
-        .exp-item::before {
-            content: '';
-            position: absolute;
-            left: -1.65rem;
-            top: 1.8rem;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: var(--ink);
-            border: 2px solid var(--background);
-            box-shadow: 0 0 0 2px var(--gray-200);
-        }
-        .exp-company {
-            font-weight: 600;
-            font-size: 1.1rem;
-            color: var(--ink);
-        }
-        .exp-role {
-            font-weight: 500;
-            font-size: 1.05rem;
-            color: var(--ink);
-        }
-        .exp-date {
+        .cert-category h3 {
             font-family: var(--font-mono);
-            font-size: 0.8rem;
-            color: var(--gray-500);
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
-        }
-        .exp-description {
-            color: var(--gray-600);
-            font-size: 0.95rem;
-            margin: 0.5rem 0 0;
-            max-width: 640px;
-        }
-        .exp-org-type {
-            font-family: var(--font-mono);
-            font-size: 0.7rem;
+            font-size: var(--text-xs);
             text-transform: uppercase;
             letter-spacing: 0.0625em;
             color: var(--gray-400);
-            display: inline-block;
-            background: var(--gray-50);
-            border: 1px solid var(--gray-200);
-            border-radius: 4px;
-            padding: 0.1rem 0.5rem;
-            margin-bottom: 0.4rem;
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+            border-bottom: 1px solid var(--gray-200);
+            padding-bottom: 0.5rem;
         }
-        [data-bs-theme="dark"] .exp-item {
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 0.5rem 1.5rem;
+        }
+        .cert-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.4rem 0;
+            border-bottom: 1px solid var(--gray-100);
+            font-size: var(--text-sm);
+            cursor: pointer;
+            transition: background-color 0.15s ease;
+            border-radius: 4px;
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
+        }
+        .cert-item:hover {
+            background-color: var(--gray-50);
+        }
+        .cert-item:last-child {
+            border-bottom: none;
+        }
+        .cert-item .cert-name {
+            font-weight: 500;
+            color: var(--ink);
+            background: none;
+            border: none;
+            padding: 0;
+            font-family: var(--font-mono);
+            font-size: var(--text-sm);
+            text-align: left;
+            flex: 1;
+        }
+        .cert-item .cert-issuer {
+            font-family: var(--font-mono);
+            font-size: var(--text-xs);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--gray-400);
+            margin: 0 1rem;
+            white-space: nowrap;
+        }
+        .cert-item .cert-verify {
+            font-family: var(--font-mono);
+            font-size: var(--text-xs);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--gray-400);
+            text-decoration: none;
+            transition: color 0.15s ease;
+            white-space: nowrap;
+            background: none;
+            border: none;
+            padding: 0;
+        }
+        .cert-item .cert-verify:hover {
+            color: var(--ink);
+        }
+        .cert-trigger {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex: 1;
+            min-width: 0;
+        }
+        .cert-trigger .cert-name {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .certificate-preview {
+            background: var(--gray-50);
+            border-radius: 12px;
+            padding: 12px;
+            border: 1px solid var(--gray-200);
+        }
+        .certificate-preview img {
+            border-radius: 8px;
+            border: 2px solid var(--gray-200);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            background: white;
+            max-width: 100%;
+            max-height: 320px;
+            object-fit: contain;
+        }
+        .modal-content {
+            border-radius: 16px;
+        }
+        [data-bs-theme="dark"] .cert-item {
             border-bottom-color: var(--gray-200);
         }
-        [data-bs-theme="dark"] .exp-item::before {
-            box-shadow: 0 0 0 2px var(--gray-200);
+        [data-bs-theme="dark"] .cert-item:hover {
+            background-color: var(--gray-50);
         }
-        [data-bs-theme="dark"] .exp-description {
-            color: var(--gray-500);
+        [data-bs-theme="dark"] .cert-item .cert-verify:hover {
+            color: var(--ink);
         }
     </style>
 </head>
@@ -124,7 +162,7 @@
     </header>
 
     <!-- ============================================================
-    MOBILE MENU OVERLAY
+    MOBILE MENU OVERLAY – no ABOUT link
     ============================================================ -->
     <div class="mobile-menu" id="mobileMenu">
         <div class="mobile-menu-inner">
@@ -141,9 +179,9 @@
             <a href="./index.html#consulting" class="nav-link" data-section="consulting">CONSULTING</a>
             <hr class="mobile-divider" />
             <a href="./projects.html" class="nav-link" data-section="projects">PROJECTS</a>
-            <a href="./experience.html" class="nav-link active" data-section="experience">EXPERIENCE</a>
+            <a href="./experience.html" class="nav-link" data-section="experience">EXPERIENCE</a>
             <a href="./stack.html" class="nav-link" data-section="stack">STACK</a>
-            <a href="./certifications.html" class="nav-link" data-section="certifications">CERTIFICATION</a>
+            <a href="./certifications.html" class="nav-link active" data-section="certifications">CERTIFICATION</a>
             <a href="./affiliations.html" class="nav-link" data-section="affiliations">AFFILIATIONS</a>
             <hr class="mobile-divider" />
             <button class="mobile-theme-toggle" id="mobileThemeToggle" aria-label="Toggle dark mode">
@@ -158,125 +196,228 @@
     ============================================================ -->
     <main id="main-content" class="main-content">
 
-        <section id="experience-page" class="section">
+        <section id="certifications-page" class="section">
             <div class="container">
                 <div class="section-header">
-                    <span class="section-number">03</span>
-                    <span class="section-title">full history</span>
-                    <a href="./index.html#experience" class="section-link ms-auto">← BACK</a>
+                    <span class="section-number">05</span>
+                    <span class="section-title">certifications</span>
+                    <a href="./index.html#certifications" class="section-link ms-auto">← BACK</a>
                 </div>
 
                 <div class="animate-in">
                     <p class="lead-bio" style="max-width: 720px; margin-bottom: 2.5rem;">
-                        A record of my leadership, QA, and community roles — from student organizations to game testing and esports management.
+                        All my certifications — courses, seminars, and workshops — each with its own certificate image.
                     </p>
 
-                    <!-- Timeline -->
-                    <div class="exp-timeline">
+                    <!-- ===================== COURSES ===================== -->
+                    <div class="cert-category">
+                        <h3>Courses</h3>
+                        <div class="cert-grid">
+                            <!-- EMC 401 -->
+                            <div class="cert-item" 
+                                 data-bs-toggle="modal" 
+                                 data-bs-target="#certModal" 
+                                 data-cert-name="EMC 401 Midterm Reviewer: Core Network Concepts &amp; Troubleshooting Essentials" 
+                                 data-cert-issuer="City College of San Jose Del Monte" 
+                                 data-cert-img="Certificates/Course/EMC 401.png"
+                                 data-cert-date="September 2026">
+                                <span class="cert-trigger">
+                                    <span class="cert-name">EMC 401 Midterm Reviewer</span>
+                                </span>
+                                <span class="cert-issuer">CCSJDM</span>
+                                <a href="#" class="cert-verify" onclick="event.stopPropagation();">VERIFY →</a>
+                            </div>
 
-                        <!-- 1: SAGA President -->
-                        <div class="exp-item">
-                            <span class="exp-org-type">Student Organization</span>
-                            <div class="exp-company">Student Animators and Game Developers Association</div>
-                            <div class="exp-role">SAGA President</div>
-                            <div class="exp-date">2026 – Present</div>
-                            <p class="exp-description">
-                                Leading the organization in promoting animation and game development within the student community. Overseeing executive operations, spearheading creative initiatives, and building partnerships with industry professionals.
-                            </p>
+                            <!-- GCI -->
+                            <div class="cert-item" 
+                                 data-bs-toggle="modal" 
+                                 data-bs-target="#certModal" 
+                                 data-cert-name="GCI World April 2026" 
+                                 data-cert-issuer="Matsuo-Iwasawa Lab, UTokyo" 
+                                 data-cert-img="Certificates/Course/GCI.png"
+                                 data-cert-date="April 2026">
+                                <span class="cert-trigger">
+                                    <span class="cert-name">GCI World April 2026</span>
+                                </span>
+                                <span class="cert-issuer">UTokyo</span>
+                                <a href="#" class="cert-verify" onclick="event.stopPropagation();">VERIFY →</a>
+                            </div>
+
+                            <!-- HTML Essentials -->
+                            <div class="cert-item" 
+                                 data-bs-toggle="modal" 
+                                 data-bs-target="#certModal" 
+                                 data-cert-name="HTML Essentials" 
+                                 data-cert-issuer="Cisco Networking Academy" 
+                                 data-cert-img="Certificates/Course/HTML Essentials.png"
+                                 data-cert-date="July 2026">
+                                <span class="cert-trigger">
+                                    <span class="cert-name">HTML Essentials</span>
+                                </span>
+                                <span class="cert-issuer">Cisco</span>
+                                <a href="#" class="cert-verify" onclick="event.stopPropagation();">VERIFY →</a>
+                            </div>
+
+                            <!-- Intro to Java -->
+                            <div class="cert-item" 
+                                 data-bs-toggle="modal" 
+                                 data-bs-target="#certModal" 
+                                 data-cert-name="Intro to Java" 
+                                 data-cert-issuer="Sololearn" 
+                                 data-cert-img="Certificates/Course/Intro to Java.jpg"
+                                 data-cert-date="August 2025">
+                                <span class="cert-trigger">
+                                    <span class="cert-name">Intro to Java</span>
+                                </span>
+                                <span class="cert-issuer">Sololearn</span>
+                                <a href="#" class="cert-verify" onclick="event.stopPropagation();">VERIFY →</a>
+                            </div>
+
+                            <!-- Java Intermediate -->
+                            <div class="cert-item" 
+                                 data-bs-toggle="modal" 
+                                 data-bs-target="#certModal" 
+                                 data-cert-name="Java Intermediate" 
+                                 data-cert-issuer="Sololearn" 
+                                 data-cert-img="Certificates/Course/Java Intermediate.jpg"
+                                 data-cert-date="August 2025">
+                                <span class="cert-trigger">
+                                    <span class="cert-name">Java Intermediate</span>
+                                </span>
+                                <span class="cert-issuer">Sololearn</span>
+                                <a href="#" class="cert-verify" onclick="event.stopPropagation();">VERIFY →</a>
+                            </div>
+
+                            <!-- Introduction to Data Science -->
+                            <div class="cert-item" 
+                                 data-bs-toggle="modal" 
+                                 data-bs-target="#certModal" 
+                                 data-cert-name="Introduction to Data Science" 
+                                 data-cert-issuer="Cisco Networking Academy" 
+                                 data-cert-img="Certificates/Course/Introduction to Data Science.png"
+                                 data-cert-date="July 2026">
+                                <span class="cert-trigger">
+                                    <span class="cert-name">Introduction to Data Science</span>
+                                </span>
+                                <span class="cert-issuer">Cisco</span>
+                                <a href="#" class="cert-verify" onclick="event.stopPropagation();">VERIFY →</a>
+                            </div>
+
+                            <!-- Introduction to Modern AI -->
+                            <div class="cert-item" 
+                                 data-bs-toggle="modal" 
+                                 data-bs-target="#certModal" 
+                                 data-cert-name="Introduction to Modern AI" 
+                                 data-cert-issuer="Cisco Networking Academy" 
+                                 data-cert-img="Certificates/Course/Introduction to Modern AI.png"
+                                 data-cert-date="August 2026">
+                                <span class="cert-trigger">
+                                    <span class="cert-name">Introduction to Modern AI</span>
+                                </span>
+                                <span class="cert-issuer">Cisco</span>
+                                <a href="#" class="cert-verify" onclick="event.stopPropagation();">VERIFY →</a>
+                            </div>
+
+                            <!-- PRESS START -->
+                            <div class="cert-item" 
+                                 data-bs-toggle="modal" 
+                                 data-bs-target="#certModal" 
+                                 data-cert-name="PRESS START: Game Development in Region 8" 
+                                 data-cert-issuer="DICT Regional Office VIII" 
+                                 data-cert-img="Certificates/Course/PRESS START.png"
+                                 data-cert-date="August 2026">
+                                <span class="cert-trigger">
+                                    <span class="cert-name">PRESS START: Game Dev</span>
+                                </span>
+                                <span class="cert-issuer">DICT</span>
+                                <a href="#" class="cert-verify" onclick="event.stopPropagation();">VERIFY →</a>
+                            </div>
                         </div>
-
-                        <!-- 2: Beacon Esports – Program & Logistics -->
-                        <div class="exp-item">
-                            <span class="exp-org-type">Esports</span>
-                            <div class="exp-company">Beacon Esports</div>
-                            <div class="exp-role">Program and Logistics</div>
-                            <div class="exp-date">2026 – Present</div>
-                            <p class="exp-description">
-                                Managing tournament programs and logistical operations for esports events. Coordinating schedules, venue setup, and team communications to ensure smooth competitive experiences.
-                            </p>
-                        </div>
-
-                        <!-- 3: TesterWork – QA -->
-                        <div class="exp-item">
-                            <span class="exp-org-type">Quality Assurance</span>
-                            <div class="exp-company">TesterWork</div>
-                            <div class="exp-role">QA Tester</div>
-                            <div class="exp-date">2026 – Present</div>
-                            <p class="exp-description">
-                                Performing manual QA testing for web and mobile applications. Identifying bugs, documenting reproducible issues, and providing actionable feedback to development teams across global projects.
-                            </p>
-                        </div>
-
-                        <!-- 4: PlaytestCloud – Game Tester -->
-                        <div class="exp-item">
-                            <span class="exp-org-type">Game Testing</span>
-                            <div class="exp-company">PlaytestCloud</div>
-                            <div class="exp-role">Game Tester</div>
-                            <div class="exp-date">2026 – Present</div>
-                            <p class="exp-description">
-                                Playtesting pre-release mobile games and providing structured feedback on gameplay, UI/UX, and overall player experience. Contributing to game polish and user engagement improvements.
-                            </p>
-                        </div>
-
-                        <!-- 5: SAGA Secretary -->
-                        <div class="exp-item">
-                            <span class="exp-org-type">Student Organization</span>
-                            <div class="exp-company">Student Animators and Game Developers Association</div>
-                            <div class="exp-role">SAGA Secretary</div>
-                            <div class="exp-date">2025 – 2026</div>
-                            <p class="exp-description">
-                                Maintained official records, meeting minutes, and internal documentation. Supported executive planning and helped coordinate org events and member activities.
-                            </p>
-                        </div>
-
-                        <!-- 6: Beacon Esports – Executive Assistant -->
-                        <div class="exp-item">
-                            <span class="exp-org-type">Esports</span>
-                            <div class="exp-company">Beacon Esports</div>
-                            <div class="exp-role">Executive Assistant</div>
-                            <div class="exp-date">2026</div>
-                            <p class="exp-description">
-                                Assisted the executive team with scheduling, communications, and administrative tasks. Supported event planning and day-to-day organizational operations.
-                            </p>
-                        </div>
-
-                        <!-- 7: Beacon Esports – Event Manager -->
-                        <div class="exp-item">
-                            <span class="exp-org-type">Esports</span>
-                            <div class="exp-company">Beacon Esports</div>
-                            <div class="exp-role">Event Manager</div>
-                            <div class="exp-date">2026</div>
-                            <p class="exp-description">
-                                Planned and managed esports events from concept to execution. Coordinated with teams, handled logistics, and ensured smooth event flow.
-                            </p>
-                        </div>
-
-                        <!-- 8: Beacon Esports – Team Manager -->
-                        <div class="exp-item">
-                            <span class="exp-org-type">Esports</span>
-                            <div class="exp-company">Beacon Esports</div>
-                            <div class="exp-role">Team Manager</div>
-                            <div class="exp-date">2025</div>
-                            <p class="exp-description">
-                                Managed esports team operations, including roster coordination, practice schedules, and player support during competitive seasons.
-                            </p>
-                        </div>
-
-                        <!-- 9: NDEP – President -->
-                        <div class="exp-item">
-                            <span class="exp-org-type">Student Organization</span>
-                            <div class="exp-company">NDEP</div>
-                            <div class="exp-role">President</div>
-                            <div class="exp-date">2022</div>
-                            <p class="exp-description">
-                                Led the organization’s initiatives and activities. Coordinated members, organized events, and represented the group in school-wide programs.
-                            </p>
-                        </div>
-
                     </div>
+
+                    <!-- ===================== SEMINARS ===================== -->
+                    <div class="cert-category">
+                        <h3>Seminars</h3>
+                        <div class="cert-grid">
+                            <!-- 3D Level Design -->
+                            <div class="cert-item" 
+                                 data-bs-toggle="modal" 
+                                 data-bs-target="#certModal" 
+                                 data-cert-name="3D Level Design in Unity" 
+                                 data-cert-issuer="Google Meet Seminar" 
+                                 data-cert-img="Certificates/Seminar/3d Level Design.png"
+                                 data-cert-date="May 2026">
+                                <span class="cert-trigger">
+                                    <span class="cert-name">3D Level Design in Unity</span>
+                                </span>
+                                <span class="cert-issuer">Seminar</span>
+                                <a href="#" class="cert-verify" onclick="event.stopPropagation();">VERIFY →</a>
+                            </div>
+
+                            <!-- Introduction to Unity -->
+                            <div class="cert-item" 
+                                 data-bs-toggle="modal" 
+                                 data-bs-target="#certModal" 
+                                 data-cert-name="Introduction to Unity Game Engine" 
+                                 data-cert-issuer="Vertexz (BSEMC 4B)" 
+                                 data-cert-img="Certificates/Seminar/Introduction to Unity.png"
+                                 data-cert-date="April 2026">
+                                <span class="cert-trigger">
+                                    <span class="cert-name">Introduction to Unity Game Engine</span>
+                                </span>
+                                <span class="cert-issuer">Vertexz</span>
+                                <a href="#" class="cert-verify" onclick="event.stopPropagation();">VERIFY →</a>
+                            </div>
+
+                            <!-- Photoshop Essentials -->
+                            <div class="cert-item" 
+                                 data-bs-toggle="modal" 
+                                 data-bs-target="#certModal" 
+                                 data-cert-name="Photoshop Essentials" 
+                                 data-cert-issuer="BSEMC Students, CCSJDM" 
+                                 data-cert-img="Certificates/Seminar/Photoshop Essentials.png"
+                                 data-cert-date="April 2026">
+                                <span class="cert-trigger">
+                                    <span class="cert-name">Photoshop Essentials</span>
+                                </span>
+                                <span class="cert-issuer">CCSJDM</span>
+                                <a href="#" class="cert-verify" onclick="event.stopPropagation();">VERIFY →</a>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
+
+        <!-- ============================================================
+        CERTIFICATION MODAL – with image preview
+        ============================================================ -->
+        <div class="modal fade" id="certModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content" style="background: var(--bs-body-bg); color: var(--bs-body-color); border-color: var(--bs-border-color);">
+                    <div class="modal-header" style="border-bottom-color: var(--bs-border-color);">
+                        <h5 class="modal-title" id="certModalTitle" style="font-weight: 600;">Certification Name</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="filter: var(--bs-btn-close-filter);"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="text-center mb-3 certificate-preview">
+                            <img id="certModalImage" src="" alt="Certificate" 
+                                 style="max-width: 100%; max-height: 350px; border-radius: 8px; border: 2px solid var(--gray-200); box-shadow: 0 4px 20px rgba(0,0,0,0.1); background: white; padding: 8px;" />
+                        </div>
+                        <div class="cert-detail">
+                            <p><strong>Issuer:</strong> <span id="certModalIssuer">Issuer Name</span></p>
+                            <p><strong>Holder:</strong> <span id="certModalHolder">Joshua Mateo</span></p>
+                            <p><strong>Issued:</strong> <span id="certModalDate">August 2026</span></p>
+                        </div>
+                    </div>
+                    <div class="modal-footer" style="border-top-color: var(--bs-border-color);">
+                        <a href="#" class="btn btn-outline-secondary btn-sm" id="certModalVerifyLink" target="_blank">Verify on Issuer Site →</a>
+                        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- ============================================================
         FOOTER

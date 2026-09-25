@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Joshua Joel Mateo — Curriculum Vitae</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Source+Serif+4:wght@400;500;600&display=swap" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <style>
+        :root {
+            --ink: #111111;
+            --gray-700: #3f3f46;
+            --gray-600: #52525b;
+            --gray-500: #71717a;
+            --gray-400: #a1a1aa;
+            --gray-300: #d4d4d8;
+            --gray-200: #e4e4e7;
+            --gray-100: #f4f4f5;
+            --font-body: 'Geist', system-ui, -apple-system, sans-serif;
+            --font-mono: 'Geist Mono', ui-monospace, monospace;
+            --font-serif: 'Source Serif 4', Georgia, serif;
+        }
+
+        *,
+        *::before,
+        *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { font-size: 16px; }
+
+        body {
+            font-family: var(--font-body);
+            font-size: 0.78rem;
+            line-height: 1.35;
+            color: var(--ink);
+            background: #ffffff;
+            -webkit-font-smoothing: antialiased;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        /* ============== PAGE ============== */
+        .page {
+            width: 210mm;
+            height: 297mm;
+            margin: 0 auto;
+            padding: 8mm 9mm;
+            background: #ffffff;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* ============== HEADER ============== */
+        .cv-header {
+            border-bottom: 1.5px solid var(--ink);
+            padding-bottom: 0.4rem;
+            margin-bottom: 0.55rem;
+            flex-shrink: 0;
+        }
+
+        .cv-name {
+            font-family: var(--font-serif);
+            font-size: 1.65rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            line-height: 1;
+            margin-bottom: 0.1rem;
+        }
+
+        .cv-title {
+            font-family: var(--font-mono);
+            font-size: 0.62rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--gray-600);
+            margin-bottom: 0.35rem;
+        }
+
+        .cv-contact {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.1rem 1rem;
+            font-family: var(--font-mono);
+            font-size: 0.56rem;
+            color: var(--gray-600);
+        }
+
+        .cv-contact .dot { color: var(--gray-300); }
+
+        /* ============== LAYOUT ============== */
+        .cv-body {
+            display: grid;
+            grid-template-columns: 1fr 175px;
+            gap: 0.9rem;
+            flex: 1;
+            min-height: 0;
+        }
+
+        .cv-main,
+        .cv-sidebar {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ============== HEADINGS ============== */
+        .section-heading,
+        .sidebar-heading {
+            font-family: var(--font-mono);
+            font-size: 0.6rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: var(--ink);
+            padding-bottom: 0.2rem;
+            border-bottom: 1px solid var(--gray-300);
+            margin-bottom: 0.4rem;
+        }
+
+        .cv-section { margin-bottom: 0.7rem; }
+        .cv-section:last-child { margin-bottom: 0; }
+
+        /* ============== PROFILE ============== */
+        .profile-text {
+            font-size: 0.68rem;
+            color: var(--gray-700);
+            line-height: 1.45;
+            text-align: justify;
+        }
+
+        /* ============== ENTRIES ============== */
+        .entry { margin-bottom: 0.42rem; }
+        .entry:last-child { margin-bottom: 0; }
+
+        .entry-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 0.5rem;
+            margin-bottom: 0.02rem;
+        }
+
+        .entry-role {
+            font-weight: 600;
+            font-size: 0.72rem;
+            color: var(--ink);
+        }
+
+        .entry-date {
+            font-family: var(--font-mono);
+            font-size: 0.55rem;
+            color: var(--gray-500);
+            white-space: nowrap;
+        }
+
+        .entry-org {
+            font-size: 0.64rem;
+            color: var(--gray-600);
+            font-style: italic;
+            margin-bottom: 0.1rem;
+        }
+
+        .entry-list {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 0.1rem;
+        }
+
+        .entry-list li {
+            font-size: 0.64rem;
+            color: var(--gray-600);
+            line-height: 1.35;
+            padding-left: 0.7rem;
+            position: relative;
+            margin-bottom: 0.03rem;
+        }
+
+        .entry-list li::before {
+            content: '–';
+            position: absolute;
+            left: 0;
+            color: var(--gray-400);
+        }
+
+        /* ============== SIDEBAR ============== */
+        .sidebar-section { margin-bottom: 0.6rem; }
+        .sidebar-section:last-child { margin-bottom: 0; }
+
+        .skill-group { margin-bottom: 0.4rem; }
+        .skill-group:last-child { margin-bottom: 0; }
+
+        .skill-label {
+            font-family: var(--font-mono);
+            font-size: 0.52rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--gray-500);
+            margin-bottom: 0.15rem;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.12rem;
+        }
+
+        .skill-tag {
+            font-family: var(--font-mono);
+            font-size: 0.55rem;
+            color: var(--gray-700);
+            background: var(--gray-100);
+            border: 1px solid var(--gray-200);
+            border-radius: 2px;
+            padding: 0.04rem 0.3rem;
+            white-space: nowrap;
+        }
+
+        .cert-list,
+        .affil-list,
+        .award-list { list-style: none; padding-left: 0; }
+
+        .cert-list li {
+            font-size: 0.6rem;
+            margin-bottom: 0.25rem;
+            padding-left: 0.55rem;
+            position: relative;
+            line-height: 1.25;
+        }
+
+        .cert-list li::before {
+            content: '●';
+            position: absolute;
+            left: 0;
+            top: 0.12rem;
+            font-size: 0.35rem;
+            color: var(--gray-400);
+        }
+
+        .cert-list .cert-name {
+            font-weight: 600;
+            color: var(--ink);
+            display: block;
+        }
+
+        .cert-list .cert-meta {
+            font-family: var(--font-mono);
+            font-size: 0.52rem;
+            color: var(--gray-500);
+            display: block;
+        }
+
+        .affil-list li { margin-bottom: 0.28rem; }
+
+        .affil-list .affil-name {
+            font-weight: 600;
+            font-size: 0.64rem;
+            color: var(--ink);
+            display: block;
+        }
+
+        .affil-list .affil-role {
+            font-family: var(--font-mono);
+            font-size: 0.52rem;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            color: var(--gray-500);
+            display: block;
+        }
+
+        .award-list li {
+            font-size: 0.58rem;
+            color: var(--gray-700);
+            padding-left: 0.55rem;
+            position: relative;
+            margin-bottom: 0.15rem;
+            line-height: 1.25;
+        }
+
+        .award-list li::before {
+            content: '★';
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--gray-400);
+            font-size: 0.45rem;
+        }
+
+        /* ============== FOOTER ============== */
+        .cv-footer {
+            margin-top: auto;
+            padding-top: 0.3rem;
+            border-top: 1px solid var(--gray-200);
+            font-family: var(--font-mono);
+            font-size: 0.5rem;
+            color: var(--gray-400);
+            display: flex;
+            justify-content: space-between;
+            flex-shrink: 0;
+        }
+
+        /* ============== PRINT ============== */
+        @page {
+            size: A4 portrait;
+            margin: 0;
+        }
+
+        @media print {
+            html, body {
+                width: 210mm;
+                height: 297mm;
+                margin: 0;
+                padding: 0;
+                background: #ffffff;
+                font-size: 16px;
+            }
+            body { font-size: 0.78rem; }
+            .page {
+                width: 210mm;
+                height: 297mm;
+                margin: 0;
+                padding: 8mm 9mm;
+                box-shadow: none;
+                border-radius: 0;
+                overflow: hidden;
+            }
+            .no-print,
+            .action-bar { display: none !important; }
+        }
+
+        /* ============== SCREEN ============== */
+        @media screen {
+            body {
+                background: #e5e5e5;
+                padding: 1.5rem 0;
+            }
+            .page {
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+                border-radius: 2px;
+            }
+        }
+
+        /* ============== ACTION BAR ============== */
+        .action-bar {
+            position: fixed;
+            top: 1.25rem;
+            right: 1.25rem;
+            z-index: 1000;
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .btn-action {
+            border: none;
+            border-radius: 8px;
+            padding: 0.55rem 1rem;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: transform 0.15s ease, background 0.15s ease, opacity 0.15s ease;
+        }
+
+        .btn-primary {
+            background: var(--ink);
+            color: #ffffff;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+        .btn-primary:hover:not(:disabled) { background: #000000; transform: translateY(-1px); }
+        .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
+
+        .btn-secondary {
+            background: #ffffff;
+            color: var(--ink);
+            border: 1px solid var(--gray-300);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+        }
+        .btn-secondary:hover { background: var(--gray-50); transform: translateY(-1px); }
+
+        @media print { .action-bar { display: none !important; } }
+
+        @media screen and (max-width: 900px) {
+            body { padding: 1rem 0; }
+            .page {
+                width: 100%;
+                height: auto;
+                min-height: auto;
+                padding: 1rem;
+                margin: 0 0.5rem;
+            }
+            .cv-body {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .action-bar {
+                top: auto;
+                bottom: 1rem;
+                right: 1rem;
+                left: 1rem;
+            }
+            .btn-action { flex: 1; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="action-bar no-print">
+        <button class="btn-action btn-primary" id="downloadPdfBtn">⬇ Download PDF</button>
+        <button class="btn-action btn-secondary" onclick="window.print()">⎙ Print</button>
+    </div>
+
+    <div class="page" id="cvContent">
+
+        <!-- HEADER -->
+        <header class="cv-header">
+            <h1 class="cv-name">Joshua Joel Mateo</h1>
+            <p class="cv-title">Creative Developer &amp; UI/UX Designer</p>
+            <div class="cv-contact">
+                <span>✉ mateojoshuajoel@gmail.com</span>
+                <span class="dot">•</span>
+                <span>⌂ Bulacan, Philippines</span>
+                <span class="dot">•</span>
+                <span>◈ github.com/Wieze</span>
+                <span class="dot">•</span>
+                <span>◈ linkedin.com/in/joshua-joel-mateo</span>
+            </div>
+        </header>
+
+        <!-- BODY -->
+        <div class="cv-body">
+
+            <!-- LEFT COLUMN -->
+            <div class="cv-main">
+
+                <section class="cv-section">
+                    <h2 class="section-heading">Profile</h2>
+                    <p class="profile-text">
+                        Creative developer and designer building modern web experiences, immersive games,
+                        intuitive interfaces, and AI‑powered solutions. Founder of <strong>JOJOMA</strong>, a
+                        student indie game studio, and President of the Student Animators and Game Developers
+                        Association. Passionate about clean design, thoughtful engineering, and turning rough
+                        ideas into products people actually use.
+                    </p>
+                </section>
+
+                <section class="cv-section">
+                    <h2 class="section-heading">Experience</h2>
+
+                    <div class="entry">
+                        <div class="entry-header">
+                            <span class="entry-role">SAGA President</span>
+                            <span class="entry-date">2026 – Present</span>
+                        </div>
+                        <div class="entry-org">Student Animators and Game Developers Association</div>
+                        <ul class="entry-list">
+                            <li>Lead creative and technical initiatives; oversee executive operations and industry partnerships.</li>
+                            <li>Previously served as Secretary (2025 – 2026), managing records and coordinating events.</li>
+                        </ul>
+                    </div>
+
+                    <div class="entry">
+                        <div class="entry-header">
+                            <span class="entry-role">Program &amp; Logistics</span>
+                            <span class="entry-date">2026 – Present</span>
+                        </div>
+                        <div class="entry-org">Beacon Esports</div>
+                        <ul class="entry-list">
+                            <li>Manage tournament programs, scheduling, and event operations for the community.</li>
+                            <li>Previously: Executive Assistant (2026), Event Manager (2026), Team Manager (2025).</li>
+                        </ul>
+                    </div>
+
+                    <div class="entry">
+                        <div class="entry-header">
+                            <span class="entry-role">QA Tester</span>
+                            <span class="entry-date">2026 – Present</span>
+                        </div>
+                        <div class="entry-org">TesterWork</div>
+                        <ul class="entry-list">
+                            <li>Manual QA on web &amp; mobile apps; document reproducible bugs and actionable feedback.</li>
+                        </ul>
+                    </div>
+
+                    <div class="entry">
+                        <div class="entry-header">
+                            <span class="entry-role">Game Tester</span>
+                            <span class="entry-date">2026 – Present</span>
+                        </div>
+                        <div class="entry-org">PlaytestCloud</div>
+                        <ul class="entry-list">
+                            <li>Playtest pre-release games; deliver UX and engagement insights to studios worldwide.</li>
+                        </ul>
+                    </div>
+
+                    <div class="entry">
+                        <div class="entry-header">
+                            <span class="entry-role">President</span>
+                            <span class="entry-date">2022</span>
+                        </div>
+                        <div class="entry-org">NDEP</div>
+                        <ul class="entry-list">
+                            <li>Led org initiatives, coordinated members, and represented the group in school programs.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="cv-section">
+                    <h2 class="section-heading">Selected Projects</h2>
+
+                    <div class="entry">
+                        <div class="entry-header">
+                            <span class="entry-role">Gray Job — Narrative Security Simulator</span>
+                            <span class="entry-date">Unity · C#</span>
+                        </div>
+                        <div class="entry-org">JOJOMA (Founder &amp; Lead Developer)</div>
+                        <ul class="entry-list">
+                            <li>Awarded People's Choice, Most Innovative Gameplay, Best Narrative, Best Technical Achievement.</li>
+                        </ul>
+                    </div>
+
+                    <div class="entry">
+                        <div class="entry-header">
+                            <span class="entry-role">Grade Management System</span>
+                            <span class="entry-date">PHP · MySQL · AI</span>
+                        </div>
+                        <div class="entry-org">School Management Platform</div>
+                        <ul class="entry-list">
+                            <li>Role-based platform with AI chatbot, grade tracking, and reporting workflows.</li>
+                        </ul>
+                    </div>
+
+                    <div class="entry">
+                        <div class="entry-header">
+                            <span class="entry-role">ABIBYSS Store</span>
+                            <span class="entry-date">PHP · MySQL · JS</span>
+                        </div>
+                        <div class="entry-org">E‑Commerce Platform</div>
+                        <ul class="entry-list">
+                            <li>Online shop with cart, checkout, secure authentication, and admin panel.</li>
+                        </ul>
+                    </div>
+
+                    <div class="entry">
+                        <div class="entry-header">
+                            <span class="entry-role">Baryabin</span>
+                            <span class="entry-date">Flutter · Firebase</span>
+                        </div>
+                        <div class="entry-org">Eco‑Tech Mobile App</div>
+                        <ul class="entry-list">
+                            <li>Converts recyclable trash into cash rewards with impact tracking and marketplace.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="cv-section">
+                    <h2 class="section-heading">Education</h2>
+                    <div class="entry">
+                        <div class="entry-header">
+                            <span class="entry-role">BS Entertainment and Multimedia Computing</span>
+                            <span class="entry-date">Expected 2027</span>
+                        </div>
+                        <div class="entry-org">City College of San Jose Del Monte, Bulacan</div>
+                        <ul class="entry-list">
+                            <li>Game Development · Animation · Interactive Media.</li>
+                        </ul>
+                    </div>
+                </section>
+
+            </div>
+
+            <!-- RIGHT COLUMN -->
+            <aside class="cv-sidebar">
+
+                <div class="sidebar-section">
+                    <h2 class="sidebar-heading">Skills</h2>
+
+                    <div class="skill-group">
+                        <div class="skill-label">Frontend</div>
+                        <div class="skill-list">
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">TypeScript</span>
+                            <span class="skill-tag">React</span>
+                            <span class="skill-tag">Next.js</span>
+                            <span class="skill-tag">HTML</span>
+                            <span class="skill-tag">CSS</span>
+                            <span class="skill-tag">Tailwind</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-group">
+                        <div class="skill-label">Backend</div>
+                        <div class="skill-list">
+                            <span class="skill-tag">Node.js</span>
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">Java</span>
+                            <span class="skill-tag">C</span>
+                            <span class="skill-tag">C++</span>
+                            <span class="skill-tag">C#</span>
+                            <span class="skill-tag">PHP</span>
+                            <span class="skill-tag">MySQL</span>
+                            <span class="skill-tag">Firebase</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-group">
+                        <div class="skill-label">Game Dev</div>
+                        <div class="skill-list">
+                            <span class="skill-tag">Unity</span>
+                            <span class="skill-tag">GDScript</span>
+                            <span class="skill-tag">Blender</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-group">
+                        <div class="skill-label">AI &amp; ML</div>
+                        <div class="skill-list">
+                            <span class="skill-tag">OpenAI</span>
+                            <span class="skill-tag">Anthropic</span>
+                            <span class="skill-tag">Claude Code</span>
+                            <span class="skill-tag">Gemini</span>
+                            <span class="skill-tag">Ollama</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-group">
+                        <div class="skill-label">Design</div>
+                        <div class="skill-list">
+                            <span class="skill-tag">Figma</span>
+                            <span class="skill-tag">Photoshop</span>
+                            <span class="skill-tag">Krita</span>
+                            <span class="skill-tag">Clip Studio</span>
+                            <span class="skill-tag">Canva</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-group">
+                        <div class="skill-label">Tools</div>
+                        <div class="skill-list">
+                            <span class="skill-tag">Git</span>
+                            <span class="skill-tag">GitHub</span>
+                            <span class="skill-tag">Docker</span>
+                            <span class="skill-tag">VS Code</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <h2 class="sidebar-heading">Certifications</h2>
+                    <ul class="cert-list">
+                        <li>
+                            <span class="cert-name">EMC 401 Midterm Reviewer</span>
+                            <span class="cert-meta">CCSJDM · Sept 2026</span>
+                        </li>
+                        <li>
+                            <span class="cert-name">Intro to Modern AI</span>
+                            <span class="cert-meta">Cisco · Aug 2026</span>
+                        </li>
+                        <li>
+                            <span class="cert-name">PRESS START: Game Dev</span>
+                            <span class="cert-meta">DICT · Aug 2026</span>
+                        </li>
+                        <li>
+                            <span class="cert-name">HTML Essentials</span>
+                            <span class="cert-meta">Cisco · July 2026</span>
+                        </li>
+                        <li>
+                            <span class="cert-name">Intro to Data Science</span>
+                            <span class="cert-meta">Cisco · July 2026</span>
+                        </li>
+                        <li>
+                            <span class="cert-name">GCI World April 2026</span>
+                            <span class="cert-meta">UTokyo · April 2026</span>
+                        </li>
+                        <li>
+                            <span class="cert-name">Intro to Java · Intermediate</span>
+                            <span class="cert-meta">Sololearn · Aug 2025</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-section">
+                    <h2 class="sidebar-heading">Affiliations</h2>
+                    <ul class="affil-list">
+                        <li>
+                            <span class="affil-name">JOJOMA</span>
+                            <span class="affil-role">Founder · Indie Game Studio</span>
+                        </li>
+                        <li>
+                            <span class="affil-name">SAGA</span>
+                            <span class="affil-role">President · Student Org</span>
+                        </li>
+                        <li>
+                            <span class="affil-name">Beacon Esports</span>
+                            <span class="affil-role">Program &amp; Logistics</span>
+                        </li>
+                        <li>
+                            <span class="affil-name">PlaytestCloud</span>
+                            <span class="affil-role">Game Tester</span>
+                        </li>
+                        <li>
+                            <span class="affil-name">TesterWork</span>
+                            <span class="affil-role">QA Tester</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-section">
+                    <h2 class="sidebar-heading">Awards</h2>
+                    <ul class="award-list">
+                        <li>People's Choice — Gray Job</li>
+                        <li>Most Innovative Gameplay</li>
+                        <li>Best Narrative Gameplay</li>
+                        <li>Best Technical Achievement</li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-section">
+                    <h2 class="sidebar-heading">Languages</h2>
+                    <ul class="cert-list">
+                        <li>
+                            <span class="cert-name">English</span>
+                            <span class="cert-meta">Professional</span>
+                        </li>
+                        <li>
+                            <span class="cert-name">Filipino / Tagalog</span>
+                            <span class="cert-meta">Native</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </aside>
+
+        </div>
+
+        <!-- FOOTER -->
+        <div class="cv-footer">
+            <span>Joshua Joel Mateo — Curriculum Vitae</span>
+            <span>Updated 2026</span>
+        </div>
+
+    </div>
+
+    <!-- ============================================================
+         PDF DOWNLOAD — captures the page exactly as rendered
+         ============================================================ -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var btn = document.getElementById('downloadPdfBtn');
+            var cv = document.getElementById('cvContent');
+            if (!btn || !cv) return;
+
+            btn.addEventListener('click', async function () {
+                var originalText = btn.innerHTML;
+                btn.innerHTML = '⏳ Generating…';
+                btn.disabled = true;
+
+                // Hide the action bar so it doesn't appear in the render
+                var actionBar = document.querySelector('.action-bar');
+                if (actionBar) actionBar.style.display = 'none';
+
+                try {
+                    // Give the browser a frame to apply the change
+                    await new Promise(function (resolve) { setTimeout(resolve, 50); });
+
+                    var canvas = await html2canvas(cv, {
+                        scale: 3,
+                        useCORS: true,
+                        backgroundColor: '#ffffff',
+                        width: cv.offsetWidth,
+                        height: cv.offsetHeight,
+                        windowWidth: cv.offsetWidth,
+                        windowHeight: cv.offsetHeight,
+                        scrollX: 0,
+                        scrollY: 0
+                    });
+
+                    var { jsPDF } = window.jspdf;
+                    var pdf = new jsPDF({
+                        unit: 'mm',
+                        format: 'a4',
+                        orientation: 'portrait',
+                        compress: true
+                    });
+
+                    var imgData = canvas.toDataURL('image/jpeg', 0.98);
+                    pdf.addImage(imgData, 'JPEG', 0, 0, 210, 297, undefined, 'FAST');
+                    pdf.save('Joshua-Joel-Mateo-CV.pdf');
+
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                } catch (err) {
+                    console.error('PDF generation failed:', err);
+                    btn.innerHTML = '⚠ Try again';
+                    setTimeout(function () {
+                        btn.innerHTML = originalText;
+                        btn.disabled = false;
+                    }, 2000);
+                } finally {
+                    if (actionBar) actionBar.style.display = '';
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
